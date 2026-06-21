@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<title>21 Días de Menús Saludables — María Solís</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+<style>
+/* ── VARIABLES ─────────────────────────────────── */
+:root{
+  --g1:#1b5e20; --g2:#2e7d32; --g3:#388e3c;
+  --g4:#43a047; --g5:#66bb6a; --g6:#a5d6a7;
+  --g7:#e8f5e9; --g8:#f1f8f1;
+  --txt:#1a1a1a; --txt2:#424242; --txt3:#757575;
+  --blanco:#fff; --oro:#d4a84b;
+}
+
+/* ── RESET PÁGINA ──────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#e0e0e0; font-family:'Lato',sans-serif;}
+
+@page{size:A4; margin:0;}
+@media print{
+  html,body{background:#fff;}
+  .pagina{box-shadow:none!important; margin:0!important;}
+}
+
+/* ── PÁGINA BASE ───────────────────────────────── */
+.pagina{
+  width:210mm; min-height:297mm;
+  background:var(--blanco);
+  box-shadow:0 4px 24px rgba(0,0,0,.18);
+  margin:12mm auto;
+  position:relative;
+  overflow:hidden;
+  page-break-after:always;
+}
+
+/* ═══════════════════════════════════════════════════
+   PORTADA
+═══════════════════════════════════════════════════ */
+.portada{
+  background:linear-gradient(160deg,var(--g1) 0%,var(--g2) 40%,var(--g3) 70%,#4caf50 100%);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  min-height:297mm; text-align:center;
+  padding:20mm 18mm;
+  position:relative;
+}
+/* patrón de fondo */
+.portada::before{
+  content:'';
+  position:absolute; inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.portada-inner{position:relative;z-index:1;}
+
+/* ornamento superior */
+.ornamento{
+  color:rgba(255,255,255,.5);
+  font-size:26px;
+  letter-spacing:20px;
+  margin-bottom:14mm;
+  display:block;
+}
+/* cinta decorativa */
+.portada-cinta{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  color:rgba(255,255,255,.9);
+  font-family:'Lato',sans-serif;
+  font-weight:900;
+  font-size:7pt;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  padding:5px 24px;
+  border-radius:40px;
+  margin-bottom:10mm;
+  display:inline-block;
+}
+.portada h1{
+  font-family:'Playfair Display',serif;
+  font-weight:900;
+  font-size:44pt;
+  color:var(--blanco);
+  line-height:1.05;
+  margin-bottom:5mm;
+  text-shadow:0 3px 18px rgba(0,0,0,.3);
+}
+.portada h1 span{color:#a5d6a7;}
+.portada-sub{
+  font-family:'Lato',sans-serif;
+  font-weight:300;
+  font-size:14pt;
+  color:rgba(255,255,255,.85);
+  letter-spacing:1px;
+  margin-bottom:18mm;
+}
+/* línea decorativa */
+.linea-oro{
+  width:60mm;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--oro),transparent);
+  margin:0 auto 18mm;
+}
+/* pilares */
+.portada-pilares{
+  display:flex; gap:14mm; justify-content:center;
+  margin-bottom:20mm;
+}
+.pilar{text-align:center;}
+.pilar-num{
+  font-family:'Playfair Display',serif;
+  font-weight:900; font-size:28pt;
+  color:var(--blanco);
+  display:block;
+}
+.pilar-lab{
+  font-size:6.5pt; letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.65);
+}
+/* autor */
+.portada-autor{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:14pt;
+  color:rgba(255,255,255,.9);
+}
+.portada-autor-rol{
+  font-family:'Lato',sans-serif;
+  font-size:8pt; letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+  margin-top:3px;
+}
+/* sello inferior */
+.portada-sello{
+  position:absolute; bottom:14mm; left:0; right:0;
+  text-align:center;
+  font-size:6.5pt; letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+}
+
+/* ═══════════════════════════════════════════════════
+   INTRO
+═══════════════════════════════════════════════════ */
+.intro-pagina{
+  padding:22mm 20mm;
+  display:flex; flex-direction:column; justify-content:center;
+  min-height:297mm;
+}
+.intro-cabecera{
+  border-bottom:2.5px solid var(--g5);
+  padding-bottom:6mm; margin-bottom:9mm;
+}
+.intro-etiqueta{
+  font-size:7pt; font-weight:900; letter-spacing:3px;
+  text-transform:uppercase; color:var(--g4);
+  margin-bottom:3mm;
+}
+.intro-titulo{
+  font-family:'Playfair Display',serif;
+  font-weight:700; font-size:22pt;
+  color:var(--g1); line-height:1.2;
+}
+.intro-pregunta{
+  font-family:'Playfair Display',serif;
+  font-weight:700; font-size:14pt;
+  color:var(--g2); margin:7mm 0 4mm;
+}
+.intro-p{
+  font-size:10.5pt; color:var(--txt2);
+  line-height:1.75; margin-bottom:4mm;
+}
+.intro-p strong{color:var(--g2);}
+.intro-logros-titulo{
+  font-family:'Playfair Display',serif;
+  font-weight:700; font-size:13pt;
+  color:var(--g1); margin:8mm 0 4mm;
+}
+.intro-logros{list-style:none; margin-bottom:8mm;}
+.intro-logros li{
+  font-size:10.5pt; color:var(--txt2);
+  padding:3.5mm 0 3.5mm 9mm;
+  border-bottom:1px solid var(--g7);
+  position:relative;
+}
+.intro-logros li::before{
+  content:'✓';
+  position:absolute; left:0;
+  color:var(--g4); font-weight:900;
+}
+.intro-frase{
+  background:var(--g7);
+  border-left:4px solid var(--g4);
+  padding:5mm 7mm;
+  border-radius:0 8px 8px 0;
+  font-family:'Playfair Display',serif;
+  font-style:italic; font-size:11pt;
+  color:var(--g1); margin-top:8mm;
+}
+.intro-firma{
+  text-align:right; margin-top:5mm;
+  font-size:9pt; color:var(--txt3);
+}
+.intro-firma strong{
+  display:block; font-family:'Playfair Display',serif;
+  font-size:13pt; color:var(--g2); font-style:italic;
+}
+
+/* ═══════════════════════════════════════════════════
+   ÍNDICE
+═══════════════════════════════════════════════════ */
+.indice-pagina{
+  padding:22mm 20mm;
+  min-height:297mm;
+}
+.indice-cabecera{
+  text-align:center;
+  border-bottom:2px solid var(--g5);
+  padding-bottom:6mm; margin-bottom:9mm;
+}
+.indice-titulo{
+  font-family:'Playfair Display',serif;
+  font-weight:900; font-size:24pt;
+  color:var(--g1);
+}
+.indice-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3mm 10mm;
+}
+.indice-item{
+  display:flex; align-items:flex-start;
+  gap:3mm; padding:3mm 0;
+  border-bottom:1px dotted #c8e6c9;
+}
+.indice-num{
+  font-family:'Lato',sans-serif;
+  font-weight:900; font-size:7.5pt;
+  color:var(--g4); min-width:13mm;
+  padding-top:1px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+.indice-desc{
+  font-size:8.5pt; color:var(--txt2);
+  line-height:1.5;
+}
+.indice-sep{
+  grid-column:1/-1;
+  background:var(--g7);
+  border-left:3px solid var(--g4);
+  padding:2.5mm 5mm;
+  border-radius:0 6px 6px 0;
+  font-size:7pt; font-weight:900;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--g2); margin:3mm 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   CABECERA DE DÍA
+═══════════════════════════════════════════════════ */
+.dia-pagina{
+  padding:0;
+  min-height:297mm;
+}
+.dia-hero{
+  background:linear-gradient(130deg,var(--g1) 0%,var(--g3) 60%,#4caf50 100%);
+  padding:9mm 20mm 8mm;
+  position:relative;
+  overflow:hidden;
+}
+.dia-hero::after{
+  content:'';
+  position:absolute; bottom:-8mm; left:0; right:0;
+  height:12mm;
+  background:var(--blanco);
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+.dia-hero-num{
+  font-family:'Lato',sans-serif;
+  font-weight:900; font-size:8pt;
+  letter-spacing:4px; text-transform:uppercase;
+  color:rgba(255,255,255,.6); margin-bottom:1.5mm;
+}
+.dia-hero-titulo{
+  font-family:'Playfair Display',serif;
+  font-weight:900; font-size:26pt;
+  color:var(--blanco);
+}
+.dia-hero-nuevo{
+  display:inline-block;
+  background:var(--oro); color:var(--g1);
+  font-size:6.5pt; font-weight:900;
+  letter-spacing:2px; text-transform:uppercase;
+  padding:2px 10px; border-radius:20px;
+  margin-left:4mm; vertical-align:middle;
+}
+.dia-cuerpo{
+  padding:13mm 20mm 10mm;
+}
+
+/* ═══════════════════════════════════════════════════
+   COMIDA CARD
+═══════════════════════════════════════════════════ */
+.comida-bloque{
+  margin-bottom:7mm;
+  border-radius:8px;
+  overflow:hidden;
+  border:1px solid #e0f2e1;
+}
+.comida-header{
+  background:var(--g7);
+  padding:3.5mm 6mm;
+  display:flex; align-items:center; gap:3mm;
+  border-bottom:1px solid #c8e6c9;
+}
+.comida-tipo-badge{
+  background:var(--g3); color:var(--blanco);
+  font-size:6pt; font-weight:900;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:2px 8px; border-radius:20px;
+}
+.comida-nombre-h{
+  font-family:'Playfair Display',serif;
+  font-weight:700; font-size:11pt;
+  color:var(--g1);
+}
+.comida-cuerpo{
+  padding:4.5mm 6mm;
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:4mm;
+}
+.ingr-label{
+  font-size:6.5pt; font-weight:900;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--g5); margin-bottom:2mm;
+}
+.ingr-lista{list-style:none;}
+.ingr-lista li{
+  font-size:8.5pt; color:var(--txt2);
+  padding:1.5mm 0; border-bottom:1px solid #f1f8f1;
+  display:flex; gap:2.5mm; align-items:flex-start;
+}
+.ingr-lista li::before{content:'•'; color:var(--g5); font-size:10pt; line-height:1.1; flex-shrink:0;}
+.prep-label{
+  font-size:6.5pt; font-weight:900;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--g3); margin-bottom:2mm;
+}
+.prep-texto{
+  font-size:8.5pt; color:var(--txt2);
+  line-height:1.65;
+}
+
+/* ═══════════════════════════════════════════════════
+   MENSAJE FINAL
+═══════════════════════════════════════════════════ */
+.final-pagina{
+  background:linear-gradient(150deg,var(--g1) 0%,var(--g3) 55%,#4caf50 100%);
+  min-height:297mm;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; padding:22mm 22mm;
+  position:relative; overflow:hidden;
+}
+.final-pagina::before{
+  content:'';
+  position:absolute; inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:20px 20px;
+}
+.final-inner{position:relative;z-index:1;}
+.final-icono{font-size:36pt; margin-bottom:7mm;}
+.final-titulo{
+  font-family:'Playfair Display',serif;
+  font-weight:900; font-size:26pt;
+  color:var(--blanco); margin-bottom:5mm;
+  line-height:1.2;
+}
+.final-sub{
+  font-size:14pt; font-weight:700;
+  color:#a5d6a7; margin-bottom:9mm;
+}
+.final-linea{
+  width:50mm; height:2px;
+  background:linear-gradient(90deg,transparent,var(--oro),transparent);
+  margin:0 auto 9mm;
+}
+.final-p{
+  font-size:10.5pt; color:rgba(255,255,255,.88);
+  line-height:1.75; max-width:130mm;
+  margin:0 auto 5mm;
+}
+.final-firma-bloque{margin-top:12mm;}
+.final-cariño{
+  font-size:9pt; color:rgba(255,255,255,.6);
+  font-style:italic; margin-bottom:2mm;
+}
+.final-nombre{
+  font-family:'Playfair Display',serif;
+  font-size:20pt; font-weight:700;
+  color:var(--blanco); font-style:italic;
+}
+.final-rol{
+  font-size:8pt; letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.5); margin-top:2mm;
+}
+
+/* ── NÚMERO DE PÁGINA ──────────────────────────── */
+.pie-pagina{
+  position:absolute; bottom:8mm;
+  left:0; right:0; text-align:center;
+  font-size:7pt; color:var(--txt3);
+  letter-spacing:1px;
+}
+.pie-pagina-blanco{
+  position:absolute; bottom:8mm;
+  left:0; right:0; text-align:center;
+  font-size:7pt; color:rgba(255,255,255,.4);
+  letter-spacing:1px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     PORTADA
+════════════════════════════════════════════ -->
+<div class="pagina">
+  <div class="portada">
+    <div class="portada-inner">
+      <span class="ornamento">~ ~ ~</span>
+      <div class="portada-cinta">La Guía Definitiva para Perder Peso</div>
+      <h1>21 Días de<br><span>Menús Saludables</span></h1>
+      <p class="portada-sub">Tu Camino a la Pérdida de Peso</p>
+      <div class="linea-oro"></div>
+      <div class="portada-pilares">
+        <div class="pilar">
+          <span class="pilar-num">21</span>
+          <span class="pilar-lab">Días de Plan</span>
+        </div>
+        <div class="pilar">
+          <span class="pilar-num">63</span>
+          <span class="pilar-lab">Recetas</span>
+        </div>
+        <div class="pilar">
+          <span class="pilar-num">0</span>
+          <span class="pilar-lab">Calorías Contadas</span>
+        </div>
+      </div>
+      <p class="portada-autor">María Solís</p>
+      <p class="portada-autor-rol">Autora &amp; Guía en tu Camino Saludable</p>
+    </div>
+    <div class="portada-sello">© María Solís · Todos los derechos reservados</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     INTRODUCCIÓN
+════════════════════════════════════════════ -->
+<div class="pagina">
+  <div class="intro-pagina">
+    <div class="intro-cabecera">
+      <p class="intro-etiqueta">Introducción</p>
+      <h2 class="intro-titulo">El Comienzo de Tu Transformación</h2>
+    </div>
+    <h3 class="intro-pregunta">¿Por qué no pierdo peso si casi no como?</h3>
+    <p class="intro-p">Esa pregunta me la hice muchas veces. Comía poco, me esforzaba, y mi cuerpo no cambiaba. La verdad es que <strong>no se trata de comer menos — se trata de comer mejor.</strong></p>
+    <p class="intro-p">Este plan de 21 Días de Menús Saludables nació de esa frustración. Cada menú fue diseñado para que tu cuerpo reciba exactamente lo que necesita: proteínas que sacian, vegetales que nutren, y sabores que te hacen querer seguir.</p>
+    <h3 class="intro-logros-titulo">¿Qué vas a lograr en 21 días?</h3>
+    <ul class="intro-logros">
+      <li>Reducir la inflamación en tu cuerpo</li>
+      <li>Sentirte con más energía desde la primera semana</li>
+      <li>Perder peso sin pasar hambre</li>
+      <li>Crear hábitos alimenticios que duran toda la vida</li>
+    </ul>
+    <p class="intro-p">No necesitas contar calorías. No necesitas pasar hambre. Solo necesitas seguir el plan <strong>un día a la vez.</strong></p>
+    <div class="intro-frase">
+      "No se trata de restricciones, se trata de elecciones. Y tú has elegido cuidarte con amor."
+    </div>
+    <div class="intro-firma">
+      Con todo mi cariño,
+      <strong>María Solís</strong>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 2</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ÍNDICE
+════════════════════════════════════════════ -->
+<div class="pagina">
+  <div class="indice-pagina">
+    <div class="indice-cabecera">
+      <p class="intro-etiqueta" style="text-align:center;">Contenido Completo</p>
+      <h2 class="indice-titulo">Índice</h2>
+    </div>
+    <div class="indice-grid">
+      <div class="indice-sep">✦ Semana 1 — Días 1 al 7</div>
+      <div class="indice-item">
+        <span class="indice-num">Día 1</span>
+        <span class="indice-desc">Huevos con Espinacas · Ensalada de Pollo · Salmón al Horno</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 2</span>
+        <span class="indice-desc">Claras con Champiñones · Tazón de Atún · Pavo a la Plancha</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 3</span>
+        <span class="indice-desc">Batido de Proteínas · Ensalada César · Carne de Res</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 4</span>
+        <span class="indice-desc">Yogur Griego · Sopa de Verduras · Pez Espada</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 5</span>
+        <span class="indice-desc">Omelette de Verduras · Wrap de Lechuga · Chuleta con Coliflor</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 6 ✨</span>
+        <span class="indice-desc">Tostadas de Aguacate · Ensalada de Camarones · Pollo al Limón</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 7</span>
+        <span class="indice-desc">Avena con Frutas · Salmón al Horno · Wrap de Pavo</span>
+      </div>
+      <div class="indice-sep">✦ Semana 2 — Días 8 al 14</div>
+      <div class="indice-item">
+        <span class="indice-num">Día 8</span>
+        <span class="indice-desc">Smoothie Bowl · Pollo Salteado · Ensalada de Garbanzos</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 9</span>
+        <span class="indice-desc">Tostadas de Aguacate · Filete de Res · Sopa Minestrone</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 10</span>
+        <span class="indice-desc">Pancakes de Avena · Tilapia al Vapor · Ensalada Caprese</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 11</span>
+        <span class="indice-desc">Tostadas con Huevo · Pollo a la Naranja · Sopa de Verduras</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 12</span>
+        <span class="indice-desc">Tostadas de Aguacate · Pollo con Calabaza · Sopa de Tomate</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 13</span>
+        <span class="indice-desc">Tostadas Integrales · Pollo a la Parrilla · Sopa de Lentejas</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 14</span>
+        <span class="indice-desc">Batido Verde · Ensalada de Quinoa · Crema de Espárragos</span>
+      </div>
+      <div class="indice-sep">✦ Semana 3 — Días 15 al 21</div>
+      <div class="indice-item">
+        <span class="indice-num">Día 15</span>
+        <span class="indice-desc">Avena con Frutas · Tacos de Pescado · Ensalada de Atún</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 16</span>
+        <span class="indice-desc">Tostadas de Huevo · Pollo al Limón · Crema de Calabaza</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 17</span>
+        <span class="indice-desc">Batido de Plátano · Salmón al Horno · Ensalada de Garbanzos</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 18</span>
+        <span class="indice-desc">Panqueques de Avena · Pollo con Arroz · Crema de Espinacas</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 19</span>
+        <span class="indice-desc">Tostadas de Aguacate · Filete de Res · Sopa de Calabacita</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 20</span>
+        <span class="indice-desc">Batido de Frutas · Tilapia al Vapor · Ensalada Caprese</span>
+      </div>
+      <div class="indice-item">
+        <span class="indice-num">Día 21 🎉</span>
+        <span class="indice-desc">Omelette de Espinacas · Pollo al Curry · Sopa de Verduras</span>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 3</div>
+</div>
+
+<!-- ═══ MACRO para días ═══════════════════════ -->
+<!-- DÍA 1 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero">
+      <div class="dia-hero-num">Semana 1 · Recetas del Día</div>
+      <div class="dia-hero-titulo">Día 1</div>
+    </div>
+    <div class="dia-cuerpo">
+
+      <div class="comida-bloque">
+        <div class="comida-header">
+          <span class="comida-tipo-badge">🌅 Desayuno</span>
+          <span class="comida-nombre-h">Huevos Revueltos con Espinacas y Aguacate</span>
+        </div>
+        <div class="comida-cuerpo">
+          <div>
+            <p class="ingr-label">Ingredientes</p>
+            <ul class="ingr-lista">
+              <li>2 huevos (100 g)</li>
+              <li>1/2 aguacate (75 g)</li>
+              <li>1/2 taza de espinacas frescas (30 g)</li>
+              <li>Sal y pimienta al gusto</li>
+            </ul>
+          </div>
+          <div>
+            <p class="prep-label">Preparación</p>
+            <p class="prep-texto">Batir los huevos y cocinar en una sartén antiadherente con las espinacas. Servir con el aguacate cortado.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="comida-bloque">
+        <div class="comida-header">
+          <span class="comida-tipo-badge">☀️ Almuerzo</span>
+          <span class="comida-nombre-h">Ensalada de Pollo a la Parrilla</span>
+        </div>
+        <div class="comida-cuerpo">
+          <div>
+            <p class="ingr-label">Ingredientes</p>
+            <ul class="ingr-lista">
+              <li>150 g de pechuga de pollo a la parrilla</li>
+              <li>50 g de lechuga</li>
+              <li>30 g de tomate</li>
+              <li>20 g de pepino</li>
+              <li>1 cucharada de aceite de oliva</li>
+              <li>Sal y vinagre al gusto</li>
+            </ul>
+          </div>
+          <div>
+            <p class="prep-label">Preparación</p>
+            <p class="prep-texto">Cortar el pollo en tiras y mezclar con las verduras. Aliñar con aceite, sal y vinagre.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="comida-bloque">
+        <div class="comida-header">
+          <span class="comida-tipo-badge">🌙 Cena</span>
+          <span class="comida-nombre-h">Salmón al Horno con Brócoli</span>
+        </div>
+        <div class="comida-cuerpo">
+          <div>
+            <p class="ingr-label">Ingredientes</p>
+            <ul class="ingr-lista">
+              <li>150 g de salmón</li>
+              <li>1 taza de brócoli al vapor (150 g)</li>
+              <li>1 cucharadita de aceite de oliva</li>
+              <li>Sal y pimienta al gusto</li>
+            </ul>
+          </div>
+          <div>
+            <p class="prep-label">Preparación</p>
+            <p class="prep-texto">Hornear el salmón a 180 °C durante 15 minutos. Servir con brócoli al vapor y rociar con aceite de oliva.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 4</div>
+</div>
+
+<!-- DÍA 2 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 1 · Recetas del Día</div><div class="dia-hero-titulo">Día 2</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Claras de Huevo con Champiñones y Queso</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 claras de huevo y 1 huevo entero (120 g)</li><li>1/4 taza de champiñones (30 g)</li><li>1 rebanada de queso bajo en grasa (30 g)</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Saltear los champiñones y luego agregar los huevos. Cocinar hasta que estén listos y añadir el queso.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Tazón de Atún</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de atún en agua, escurrido</li><li>1 cucharada de mayonesa ligera</li><li>50 g de apio, picado</li><li>30 g de cebolla, picada</li><li>1 hoja de lechuga para envolver</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar atún con mayonesa, apio y cebolla. Servir en la lechuga como envoltura.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Pechuga de Pavo a la Plancha</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de pechuga de pavo</li><li>1 taza de espárragos al vapor (130 g)</li><li>1 cucharadita de aceite de oliva</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la pechuga a la plancha. Servir con espárragos al vapor y rociar con aceite de oliva.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 5</div>
+</div>
+
+<!-- DÍA 3 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 1 · Recetas del Día</div><div class="dia-hero-titulo">Día 3</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Batido de Proteínas</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>1 scoop de proteína en polvo (30 g)</li><li>200 ml de agua o leche de almendra sin azúcar</li><li>1 cucharada de mantequilla de almendra (16 g)</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar todos los ingredientes en una licuadora hasta obtener una mezcla suave.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Ensalada César con Pollo</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de pollo a la parrilla, en tiras</li><li>50 g de lechuga romana</li><li>20 g de queso parmesano rallado</li><li>1 cda. de aderezo César bajo en carbos</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar los ingredientes en un tazón y añadir el aderezo.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Carne de Res a la Parrilla con Col Rizada</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de carne de res</li><li>1 taza de col rizada (70 g)</li><li>1 cucharadita de aceite de oliva</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la carne a la parrilla. Saltear la col rizada en aceite de oliva y servir junto a la carne.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 6</div>
+</div>
+
+<!-- DÍA 4 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 1 · Recetas del Día</div><div class="dia-hero-titulo">Día 4</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Yogur Griego con Nueces</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de yogur griego natural</li><li>1/4 taza de nueces (30 g)</li><li>1 cucharadita de canela</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar todos los ingredientes en un tazón.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Sopa de Verduras</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>1 taza de caldo de pollo</li><li>100 g de espinacas</li><li>50 g de brócoli</li><li>50 g de calabacín, picado</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Hervir todos los ingredientes en el caldo hasta que las verduras estén tiernas.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Pez Espada a la Plancha con Judías Verdes</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de pez espada</li><li>1 taza de judías verdes al vapor (150 g)</li><li>1 cucharadita de aceite de oliva</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar el pez espada a la plancha y servir con judías verdes al vapor.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 7</div>
+</div>
+
+<!-- DÍA 5 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 1 · Recetas del Día</div><div class="dia-hero-titulo">Día 5</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Omelette de Verduras</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 huevos (100 g)</li><li>50 g de pimientos, picados</li><li>30 g de cebolla, picada</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Batir los huevos y cocinar con los pimientos y cebolla en una sartén.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Wrap de Lechuga con Pollo</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de pollo desmenuzado</li><li>50 g de zanahoria rallada</li><li>30 g de pepino, picado</li><li>1 cda. de salsa de soya baja en sodio</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar todos los ingredientes y servir en hojas de lechuga como envoltura.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Chuleta de Cerdo a la Parrilla con Coliflor</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de chuleta de cerdo</li><li>1 taza de coliflor asada (150 g)</li><li>1 cucharadita de aceite de oliva</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la chuleta a la parrilla y servir con coliflor asada.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 8</div>
+</div>
+
+<!-- DÍA 6 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 1 · Recetas del Día</div><div class="dia-hero-titulo">Día 6 <span class="dia-hero-nuevo">NUEVO</span></div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Tostadas Integrales con Aguacate y Huevo Pochado</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 rebanadas de pan integral</li><li>1/2 aguacate</li><li>1 huevo pochado</li><li>Sal, pimienta y chile en hojuelas al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Tostar el pan, untar el aguacate, colocar el huevo pochado encima y sazonar. Fresco y nutritivo para empezar el día.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Ensalada de Camarones con Mango</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de camarones cocidos</li><li>1/2 mango en cubos</li><li>50 g de lechuga</li><li>30 g de pepino</li><li>1 cda. de aceite de oliva</li><li>Jugo de 1 limón</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar los camarones con el mango, lechuga y pepino. Aliñar con aceite de oliva y jugo de limón.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Pollo al Limón con Espárragos</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de pechuga de pollo</li><li>1 taza de espárragos</li><li>Jugo de 1 limón</li><li>1 cdita. de aceite de oliva</li><li>Sal, pimienta y ajo al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Marinar el pollo con limón y ajo por 10 minutos. Cocinar a la plancha hasta dorar. Servir con espárragos al vapor.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 9</div>
+</div>
+
+<!-- DÍA 7 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 1 · Recetas del Día</div><div class="dia-hero-titulo">Día 7</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Avena con Frutas y Semillas</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>40 g de avena</li><li>200 ml de leche de almendra</li><li>1 plátano (80 g)</li><li>50 g de fresas</li><li>1 cda. de semillas de chía (15 g)</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la avena con la leche de almendra hasta que espese. Servir con plátano, fresas y semillas de chía.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Filete de Salmón al Horno con Espárragos</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de filete de salmón</li><li>Jugo de medio limón</li><li>1 diente de ajo</li><li>1 cdita. de eneldo seco</li><li>150 g de espárragos</li><li>80 g de arroz integral cocido</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Marinar el salmón con limón, ajo y eneldo. Hornear a 180°C por 15 min. Acompañar con espárragos y arroz integral.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Wrap de Pavo y Vegetales</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>1 tortilla integral (30 g)</li><li>80 g de pechuga de pavo cocida</li><li>30 g de espinacas frescas</li><li>30 g de zanahoria rallada</li><li>20 g de aguacate</li><li>1 cda. de hummus (15 g)</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Colocar el hummus en la tortilla, agregar el pavo, espinacas, zanahoria y aguacate. Enrollar y servir.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 10</div>
+</div>
+
+<!-- DÍA 8 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 2 · Recetas del Día</div><div class="dia-hero-titulo">Día 8</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Smoothie Bowl de Frutos Rojos</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de frutos rojos</li><li>200 g de yogur natural</li><li>30 g de granola</li><li>15 g de almendras</li><li>10 g de coco rallado</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Licuar los frutos rojos con el yogur hasta obtener una mezcla espesa. Decorar con granola, almendras y coco rallado.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Pollo Salteado con Verduras</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de pechuga de pollo</li><li>80 g de brócoli</li><li>50 g de zanahoria</li><li>50 g de calabacín</li><li>1 cda. de salsa de soya baja en sodio</li><li>100 g de papa</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cortar el pollo en tiras y saltear con las verduras. Agregar salsa de soya. Servir con papa al horno con hierbas.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Ensalada de Garbanzos y Espinacas</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de garbanzos cocidos</li><li>30 g de espinacas frescas</li><li>50 g de tomates cherry</li><li>30 g de pepino</li><li>15 g de aceitunas negras</li><li>1 cda. aceite de oliva · limón</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar los garbanzos con espinacas, tomates, pepino y aceitunas. Aliñar con aceite de oliva y jugo de limón.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 11</div>
+</div>
+
+<!-- DÍA 9 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 2 · Recetas del Día</div><div class="dia-hero-titulo">Día 9</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Tostadas de Aguacate y Huevo Poché</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 rebanadas de pan integral (60 g)</li><li>50 g de aguacate</li><li>1 huevo (50 g)</li><li>5 g de semillas de sésamo</li><li>Jugo de 1 toronja (150 ml)</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Untar el aguacate en el pan. Cocinar el huevo en agua hirviendo hasta que la clara esté firme. Colocar encima y espolvorear sésamo.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Filete de Res con Puré de Camote</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de filete de res</li><li>1 camote (100 g)</li><li>50 g de espinacas</li><li>10 g de nueces</li><li>10 g de arándanos secos</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar el filete con sal marina y pimienta. Acompañar con puré de camote y ensalada de espinacas con nueces.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Sopa Minestrone</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>80 g de calabacita</li><li>50 g de zanahoria</li><li>50 g de apio</li><li>100 g de tomate</li><li>30 g de pasta integral</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar las verduras picadas en caldo de verduras y agregar la pasta integral hasta que esté al dente.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 12</div>
+</div>
+
+<!-- DÍA 10 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 2 · Recetas del Día</div><div class="dia-hero-titulo">Día 10</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Pancakes de Avena y Plátano</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>40 g de avena</li><li>1 plátano (80 g)</li><li>1 huevo (50 g)</li><li>1 cdita. de miel (5 g)</li><li>1 taza de café negro</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Triturar el plátano y mezclar con avena y huevo. Cocinar en sartén antiadherente y servir con miel.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Tilapia al Vapor con Verduras</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de tilapia</li><li>10 g de cilantro fresco</li><li>10 g de perejil</li><li>80 g de arroz basmati</li><li>50 g de zanahorias · 50 g de ejotes</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la tilapia con cilantro y perejil. Acompañar con arroz basmati y verduras salteadas.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Ensalada Caprese con Pan Integral</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de tomate</li><li>50 g de mozzarella</li><li>10 g de albahaca fresca</li><li>1 cda. aceite de oliva · vinagre balsámico</li><li>1 rebanada de pan integral</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Alternar rodajas de tomate y mozzarella. Decorar con albahaca y aderezar con aceite de oliva y vinagre balsámico.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 13</div>
+</div>
+
+<!-- DÍA 11 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 2 · Recetas del Día</div><div class="dia-hero-titulo">Día 11</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Tostadas con Huevo y Espinaca</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 rebanadas de pan integral (60 g)</li><li>1 huevo (50 g)</li><li>30 g de espinacas salteadas</li><li>10 g de queso rallado</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Tostar el pan, agregar espinacas salteadas y el huevo frito encima. Decorar con queso rallado.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Pollo a la Naranja con Ensalada Fresca</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de pechuga de pollo</li><li>Jugo de una naranja (50 ml)</li><li>1 cdita. de miel (5 g)</li><li>80 g de lechuga</li><li>30 g zanahoria rallada · 20 g pepino</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar el pollo a la plancha con el jugo de naranja y miel. Acompañar con ensalada fresca.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Sopa de Verduras con Pan Integral</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de calabacita</li><li>50 g de zanahoria</li><li>50 g de apio</li><li>100 ml de caldo de pollo</li><li>1 rebanada de pan integral</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar las verduras en el caldo hasta que estén suaves. Servir con pan integral.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 14</div>
+</div>
+
+<!-- DÍA 12 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 2 · Recetas del Día</div><div class="dia-hero-titulo">Día 12</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Tostadas de Aguacate con Huevo Cocido</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 rebanadas de pan integral (60 g)</li><li>50 g de aguacate</li><li>1 huevo cocido (50 g)</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Tostar el pan, untar con aguacate y colocar rodajas de huevo cocido. Agregar sal y pimienta.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Pechuga de Pollo con Puré de Calabaza</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de pechuga de pollo</li><li>100 g de calabaza</li><li>1 cdita. de aceite de oliva (5 ml)</li><li>80 g de brócoli al vapor</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la pechuga a la plancha. Hervir la calabaza y hacer un puré con aceite. Acompañar con brócoli al vapor.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Sopa de Tomate y Albahaca</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de tomate</li><li>10 g de albahaca fresca</li><li>1 diente de ajo</li><li>100 ml de caldo de verduras</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Saltear el ajo, agregar tomates y caldo. Cocinar 10 minutos y licuar. Servir con albahaca fresca.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 15</div>
+</div>
+
+<!-- DÍA 13 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 2 · Recetas del Día</div><div class="dia-hero-titulo">Día 13</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Tostadas Integrales con Queso y Tomate</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 rebanadas de pan integral (60 g)</li><li>50 g de queso fresco</li><li>50 g de tomate en rodajas</li><li>Orégano al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Tostar el pan integral, colocar las rodajas de tomate y queso fresco. Espolvorear con orégano y servir.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Pechuga de Pollo a la Parrilla con Ensalada Mixta</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de pechuga de pollo</li><li>80 g de lechuga</li><li>50 g de zanahoria rallada</li><li>30 g de pepino en rodajas</li><li>1 cda. aceite de oliva · limón</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la pechuga a la parrilla y servir con ensalada mixta aderezada con aceite de oliva y limón.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Sopa de Lentejas</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de lentejas cocidas</li><li>1 diente de ajo</li><li>50 g de zanahoria en cubos</li><li>100 ml de caldo de verduras</li><li>1 cdita. de aceite de oliva</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Saltear el ajo con aceite, agregar zanahoria, lentejas y caldo. Cocinar a fuego medio 15 minutos. Servir caliente.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 16</div>
+</div>
+
+<!-- DÍA 14 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 2 · Recetas del Día</div><div class="dia-hero-titulo">Día 14</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Batido Verde de Espinacas y Manzana</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>1 taza de espinacas frescas (30 g)</li><li>1 manzana verde (150 g)</li><li>1 taza de agua (200 ml)</li><li>Jugo de medio limón (10 ml)</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Licuar todos los ingredientes hasta obtener una mezcla homogénea. Servir fresco.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Ensalada de Quinoa y Pollo</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de quinoa cocida</li><li>80 g de pechuga de pollo desmenuzada</li><li>50 g de pepino picado</li><li>50 g de zanahoria rallada</li><li>1 cda. aceite de oliva · limón</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar todos los ingredientes en un tazón y aderezar con aceite de oliva y jugo de limón.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Crema de Espárragos</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de espárragos</li><li>100 ml de caldo de verduras</li><li>1 diente de ajo</li><li>1 cdita. de aceite de oliva</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Saltear el ajo, agregar espárragos troceados y caldo. Cocinar 10 minutos y licuar hasta textura suave.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 17</div>
+</div>
+
+<!-- DÍA 15 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 3 · Recetas del Día</div><div class="dia-hero-titulo">Día 15</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Avena con Frutas y Canela</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>40 g de avena</li><li>200 ml de leche de almendra</li><li>1 plátano en rodajas (80 g)</li><li>1 cdita. de canela (5 g)</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la avena con la leche de almendra. Servir con rodajas de plátano y espolvorear con canela.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Tacos de Pescado</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de filete de pescado a la plancha</li><li>2 tortillas de maíz (60 g)</li><li>50 g de col rallada</li><li>1 cda. de yogur natural</li><li>Jugo de medio limón</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Colocar el pescado desmenuzado sobre las tortillas con col rallada. Aderezar con yogur y limón.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Ensalada de Atún y Espinacas</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>80 g de atún en agua</li><li>50 g de espinacas frescas</li><li>30 g de pepino en rodajas</li><li>1 cda. aceite de oliva · limón</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar todos los ingredientes y aderezar con aceite de oliva y jugo de limón.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 18</div>
+</div>
+
+<!-- DÍA 16 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 3 · Recetas del Día</div><div class="dia-hero-titulo">Día 16</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Tostadas de Huevo y Aguacate</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 rebanadas de pan integral (60 g)</li><li>1 huevo revuelto (50 g)</li><li>50 g de aguacate</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Tostar el pan, untar con aguacate y agregar el huevo revuelto encima. Sazonar con sal y pimienta.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Pechuga de Pollo al Limón con Verduras Salteadas</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de pechuga de pollo</li><li>Jugo de medio limón</li><li>50 g de calabacín · 50 g de zanahoria</li><li>1 cdita. de aceite de oliva</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Marinar el pollo con limón y cocinar a la plancha. Saltear las verduras con aceite de oliva y servir como acompañamiento.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Crema de Calabaza</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de calabaza</li><li>100 ml de caldo de verduras</li><li>1 diente de ajo</li><li>1 cdita. de aceite de oliva</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la calabaza y el ajo en el caldo hasta que estén suaves. Licuar hasta textura cremosa. Servir caliente.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 19</div>
+</div>
+
+<!-- DÍA 17 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 3 · Recetas del Día</div><div class="dia-hero-titulo">Día 17</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Batido de Plátano y Avena</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>1 plátano (80 g)</li><li>200 ml de leche de almendra</li><li>20 g de avena</li><li>1 cdita. de miel (5 g)</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Licuar todos los ingredientes hasta obtener un batido homogéneo. Servir frío.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Salmón al Horno con Espárragos</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de filete de salmón</li><li>100 g de espárragos</li><li>1 cdita. de aceite de oliva</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Colocar el salmón y los espárragos en bandeja. Rociar con aceite, sazonar y hornear a 180°C durante 15 minutos.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Ensalada de Garbanzos</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de garbanzos cocidos</li><li>50 g de tomate cherry</li><li>30 g de pepino</li><li>1 cda. aceite de oliva · limón</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Mezclar todos los ingredientes en un bol y aderezar con aceite de oliva y jugo de limón.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 20</div>
+</div>
+
+<!-- DÍA 18 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 3 · Recetas del Día</div><div class="dia-hero-titulo">Día 18</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Panqueques de Avena y Plátano</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>40 g de avena</li><li>1 plátano (80 g)</li><li>1 huevo (50 g)</li><li>1 cdita. de miel (5 g)</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Triturar el plátano y mezclar con la avena y el huevo. Cocinar en sartén antiadherente hasta dorar. Servir con miel.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Pechuga de Pollo con Arroz Integral y Verduras</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de pechuga de pollo</li><li>80 g de arroz integral cocido</li><li>50 g de brócoli · 50 g de zanahoria</li><li>1 cdita. de aceite de oliva</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar el pollo a la plancha y servir con arroz integral y verduras al vapor.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Crema de Espinacas</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de espinacas</li><li>100 ml de caldo de verduras</li><li>1 diente de ajo</li><li>1 cdita. de aceite de oliva</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Saltear el ajo con las espinacas, agregar el caldo y cocinar 5 minutos. Licuar hasta textura cremosa. Servir caliente.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 21</div>
+</div>
+
+<!-- DÍA 19 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 3 · Recetas del Día</div><div class="dia-hero-titulo">Día 19</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Tostadas de Aguacate y Queso Cottage</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 rebanadas de pan integral (60 g)</li><li>50 g de aguacate</li><li>30 g de queso cottage</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Untar el aguacate sobre las tostadas y agregar queso cottage. Sazonar con sal y pimienta.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Filete de Res con Ensalada Verde</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de filete de res</li><li>80 g de lechuga · 50 g de espinacas</li><li>30 g de pepino</li><li>1 cda. aceite de oliva · limón</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar el filete a la parrilla y servir con la ensalada verde aderezada con aceite de oliva y limón.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Sopa de Calabacita y Zanahoria</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de calabacita</li><li>50 g de zanahoria</li><li>100 ml de caldo de pollo</li><li>1 cdita. de aceite de oliva</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar las verduras en el caldo hasta que estén suaves. Licuar y servir caliente.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 22</div>
+</div>
+
+<!-- DÍA 20 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 3 · Recetas del Día</div><div class="dia-hero-titulo">Día 20</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Batido de Frutas y Espinacas</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>1 taza de espinacas frescas (30 g)</li><li>1 plátano (80 g)</li><li>1 taza de leche de almendra (200 ml)</li><li>1 cdita. de miel (5 g)</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Licuar todos los ingredientes hasta obtener una mezcla homogénea. Servir frío.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Tilapia al Vapor con Arroz Integral</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>150 g de filete de tilapia</li><li>80 g de arroz integral cocido</li><li>50 g de brócoli</li><li>Jugo de medio limón</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar la tilapia al vapor y servir con arroz integral y brócoli al vapor. Rociar con jugo de limón.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Ensalada Caprese</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>100 g de tomate</li><li>50 g de mozzarella fresca</li><li>10 g de albahaca</li><li>1 cda. aceite de oliva · vinagre balsámico</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cortar el tomate y la mozzarella en rodajas. Alternar en un plato, agregar albahaca y aderezar.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 23</div>
+</div>
+
+<!-- DÍA 21 -->
+<div class="pagina">
+  <div class="dia-pagina">
+    <div class="dia-hero"><div class="dia-hero-num">Semana 3 · Último Día del Plan 🎉</div><div class="dia-hero-titulo">Día 21</div></div>
+    <div class="dia-cuerpo">
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌅 Desayuno</span><span class="comida-nombre-h">Omelette de Espinacas y Queso Fresco</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>2 huevos (100 g)</li><li>30 g de espinacas frescas</li><li>20 g de queso fresco</li><li>Sal y pimienta al gusto</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Batir los huevos y cocinar en una sartén con las espinacas. Agregar el queso fresco al final. Servir caliente.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">☀️ Almuerzo</span><span class="comida-nombre-h">Pollo al Curry con Arroz Integral</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>120 g de pechuga de pollo</li><li>100 g de arroz integral cocido</li><li>50 g de zanahoria · 50 g de calabacín</li><li>1 cdita. de curry en polvo</li><li>1 cdita. de aceite de oliva</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Saltear el pollo y las verduras con aceite de oliva y curry. Servir con arroz integral caliente.</p></div>
+        </div>
+      </div>
+      <div class="comida-bloque">
+        <div class="comida-header"><span class="comida-tipo-badge">🌙 Cena</span><span class="comida-nombre-h">Sopa de Verduras Variadas</span></div>
+        <div class="comida-cuerpo">
+          <div><p class="ingr-label">Ingredientes</p><ul class="ingr-lista"><li>50 g de zanahoria</li><li>50 g de apio</li><li>50 g de papa</li><li>100 ml de caldo de verduras</li></ul></div>
+          <div><p class="prep-label">Preparación</p><p class="prep-texto">Cocinar las verduras en el caldo hasta que estén suaves. Licuar parcialmente para dejar algunos trozos enteros. Servir caliente.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie-pagina">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 24</div>
+</div>
+
+<!-- MENSAJE FINAL -->
+<div class="pagina">
+  <div class="final-pagina">
+    <div class="final-inner">
+      <div class="final-icono">🎉</div>
+      <h2 class="final-titulo">¡Felicidades!</h2>
+      <p class="final-sub">Has completado los 21 días de menús saludables.</p>
+      <div class="final-linea"></div>
+      <p class="final-p">Llegar al final de este camino de 21 días no es solo terminar un libro. Es comenzar una nueva etapa en tu vida, una etapa donde comer saludable se siente delicioso, liviano y real.</p>
+      <p class="final-p">Aquí, no se trata de restricciones, se trata de elecciones. Y tú has elegido cuidarte con amor. ¡Y eso merece celebrarse!</p>
+      <div class="final-firma-bloque">
+        <div class="final-linea" style="margin-bottom:8mm;"></div>
+        <p class="final-cariño">Con todo mi cariño,</p>
+        <p class="final-nombre">María Solís</p>
+        <p class="final-rol">Autora y Guía en tu Camino Saludable</p>
+      </div>
+    </div>
+    <div class="pie-pagina-blanco">21 Días de Menús Saludables · María Solís &nbsp;|&nbsp; 25</div>
+  </div>
+</div>
+
+</body>
+</html>

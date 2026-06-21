@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<title>Bono 2 — Guía de Sustituciones Saludables</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --g1:#1b5e20;--g2:#2e7d32;--g3:#388e3c;--g4:#43a047;--g5:#66bb6a;
+  --g6:#a5d6a7;--g7:#e8f5e9;--oro:#d4a84b;--rojo:#e53935;
+  --txt:#1a1a1a;--txt2:#424242;--txt3:#757575;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#d0d0d0;font-family:'Lato',sans-serif;}
+@page{size:A4;margin:0;}
+@media print{html,body{background:#fff;}.pagina{box-shadow:none!important;margin:0!important;}}
+.pagina{width:210mm;min-height:297mm;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.18);margin:10mm auto;position:relative;overflow:hidden;page-break-after:always;}
+
+/* PORTADA */
+.portada{background:linear-gradient(150deg,var(--g1) 0%,var(--g2) 45%,var(--g4) 80%,#81c784 100%);min-height:297mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18mm;position:relative;overflow:hidden;}
+.portada::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:20px 20px;}
+.p-inner{position:relative;z-index:1;}
+.p-bono-chip{display:inline-block;background:var(--oro);color:var(--g1);font-weight:900;font-size:7pt;letter-spacing:3px;text-transform:uppercase;padding:5px 18px;border-radius:30px;margin-bottom:8mm;}
+.p-icono{font-size:44pt;margin-bottom:5mm;display:block;}
+.p-titulo{font-family:'Playfair Display',serif;font-weight:900;font-size:28pt;color:#fff;line-height:1.15;margin-bottom:4mm;}
+.p-titulo span{color:#a5d6a7;}
+.p-linea{width:50mm;height:2px;background:linear-gradient(90deg,transparent,var(--oro),transparent);margin:6mm auto;}
+.p-sub{font-size:11pt;color:rgba(255,255,255,.8);margin-bottom:10mm;font-weight:300;}
+.p-autor{font-family:'Playfair Display',serif;font-style:italic;font-size:13pt;color:rgba(255,255,255,.9);}
+.p-autor-rol{font-size:7.5pt;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:2mm;}
+.p-sello{position:absolute;bottom:12mm;left:0;right:0;text-align:center;font-size:6pt;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);}
+
+/* CONTENIDO */
+.contenido{padding:13mm 15mm 10mm;}
+.pag-header{border-bottom:2px solid var(--g5);padding-bottom:3mm;margin-bottom:6mm;display:flex;align-items:flex-end;justify-content:space-between;}
+.pag-titulo{font-family:'Playfair Display',serif;font-weight:700;font-size:16pt;color:var(--g1);}
+.pag-subtitulo{font-size:7.5pt;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--g4);}
+
+/* TARJETA DE SUSTITUCIÓN */
+.sust-grid{display:grid;gap:3.5mm;}
+.sust-card{
+  display:grid;
+  grid-template-columns:2fr 16mm 2fr;
+  align-items:center;
+  gap:0;
+  border:1.2px solid #e0f2e1;
+  border-radius:8px;
+  overflow:hidden;
+  min-height:14mm;
+}
+.sust-malo{
+  background:#fff5f5;
+  padding:3mm 5mm;
+}
+.sust-malo .label{font-size:6pt;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#c62828;margin-bottom:1.5mm;}
+.sust-malo .nombre{font-weight:700;font-size:9pt;color:#b71c1c;}
+.sust-malo .detalle{font-size:7.5pt;color:#757575;margin-top:1mm;}
+.sust-flecha{
+  background:var(--g3);
+  display:flex;align-items:center;justify-content:center;
+  height:100%;font-size:14pt;color:#fff;
+  flex-direction:column;gap:1mm;
+}
+.sust-bueno{
+  background:var(--g7);
+  padding:3mm 5mm;
+}
+.sust-bueno .label{font-size:6pt;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:var(--g3);margin-bottom:1.5mm;}
+.sust-bueno .nombre{font-weight:700;font-size:9pt;color:var(--g1);}
+.sust-bueno .detalle{font-size:7.5pt;color:var(--txt3);margin-top:1mm;}
+
+.pie-pagina{position:absolute;bottom:7mm;left:0;right:0;text-align:center;font-size:6.5pt;color:var(--txt3);letter-spacing:.8px;}
+
+.tip-final{background:var(--g1);border-radius:10px;padding:5mm 8mm;margin-top:5mm;text-align:center;}
+.tip-final p{font-family:'Playfair Display',serif;font-size:11pt;color:#fff;font-style:italic;line-height:1.5;}
+.tip-final span{font-size:7.5pt;color:rgba(255,255,255,.55);display:block;margin-top:2mm;}
+
+.seccion-sep{
+  background:var(--g7);border-left:3px solid var(--g4);
+  border-radius:0 6px 6px 0;padding:2mm 5mm;margin:4mm 0 3mm;
+  font-size:7pt;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--g2);
+}
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="pagina">
+<div class="portada">
+  <div class="p-inner">
+    <div class="p-bono-chip">✦ Bono Especial #2</div>
+    <span class="p-icono">🔄</span>
+    <h1 class="p-titulo">Guía de<br><span>Sustituciones</span><br>Saludables</h1>
+    <div class="p-linea"></div>
+    <p class="p-sub">20 cambios simples que transforman<br>tu alimentación sin sacrificar el sabor</p>
+    <p class="p-autor">María Solís</p>
+    <p class="p-autor-rol">Autora · 21 Días de Menús Saludables</p>
+  </div>
+  <div class="p-sello">© María Solís · Complemento del Ebook 21 Días de Menús Saludables</div>
+</div>
+</div>
+
+<!-- SUSTITUCIONES 1-10 -->
+<div class="pagina">
+<div class="contenido">
+  <div class="pag-header">
+    <div>
+      <div class="pag-subtitulo">Guía de Sustituciones Saludables</div>
+      <div class="pag-titulo">Parte 1 — Azúcares, Grasas y Harinas</div>
+    </div>
+    <div style="font-size:8pt;color:var(--txt3);">Sustituciones 1–10</div>
+  </div>
+
+  <div class="sust-grid">
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Azúcar blanca refinada</div><div class="detalle">Calorías vacías, picos de insulina</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Stevia o Eritritol</div><div class="detalle">0 calorías, no afecta el azúcar en sangre</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Harina blanca de trigo</div><div class="detalle">Alto índice glucémico, poca fibra</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Harina de avena o almendra</div><div class="detalle">Rica en fibra y proteína, más saciante</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Mantequilla regular</div><div class="detalle">Alta en grasas saturadas</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Aguacate o aceite de coco virgen</div><div class="detalle">Grasas saludables mono y poliinsaturadas</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Leche entera de vaca</div><div class="detalle">Alta en grasas saturadas y lactosa</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Leche de almendra sin azúcar</div><div class="detalle">Baja en calorías, sin lactosa</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Arroz blanco</div><div class="detalle">Bajo en nutrientes, alto en glucosa</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Arroz integral o Quinoa</div><div class="detalle">Más fibra, proteína y micronutrientes</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Pan blanco procesado</div><div class="detalle">Sin fibra, eleva el azúcar rápidamente</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Pan integral 100% grano entero</div><div class="detalle">Rico en fibra, sacia más y por más tiempo</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Pasta blanca regular</div><div class="detalle">Poca fibra, digestión rápida</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Pasta integral o de lentejas</div><div class="detalle">Más proteína y fibra por porción</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Mayonesa comercial</div><div class="detalle">Alta en grasas trans y calorías</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Yogur griego o aguacate</div><div class="detalle">Cremoso, proteico y lleno de nutrientes</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Aceite vegetal refinado</div><div class="detalle">Inflamatorio, alto en omega-6</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Aceite de oliva extra virgen</div><div class="detalle">Antiinflamatorio, rico en antioxidantes</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Jugo de fruta embotellado</div><div class="detalle">Azúcar concentrada sin fibra</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Fruta entera o agua infusionada</div><div class="detalle">Con fibra natural que regula el azúcar</div></div>
+    </div>
+
+  </div>
+</div>
+<div class="pie-pagina">Guía de Sustituciones Saludables · María Solís &nbsp;|&nbsp; 2</div>
+</div>
+
+<!-- SUSTITUCIONES 11-20 -->
+<div class="pagina">
+<div class="contenido">
+  <div class="pag-header">
+    <div>
+      <div class="pag-subtitulo">Guía de Sustituciones Saludables</div>
+      <div class="pag-titulo">Parte 2 — Bebidas, Snacks y Proteínas</div>
+    </div>
+    <div style="font-size:8pt;color:var(--txt3);">Sustituciones 11–20</div>
+  </div>
+
+  <div class="sust-grid">
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Refresco o soda</div><div class="detalle">Azúcar o edulcorantes artificiales</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Agua con limón y hierbabuena</div><div class="detalle">Hidratante, digestiva y refrescante</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Carne roja procesada</div><div class="detalle">Alta en sodio, nitratos y grasas</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Pechuga de pollo o pescado</div><div class="detalle">Proteína magra, baja en grasa saturada</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Papas fritas de bolsa</div><div class="detalle">Grasas trans, vacías en nutrientes</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Rodajas de camote al horno</div><div class="detalle">Vitamina A, fibra y energía sostenida</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Crema ácida o crema de leche</div><div class="detalle">Alta en grasas saturadas</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Yogur griego natural</div><div class="detalle">Proteico, probiótico y bajo en grasa</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Chocolate con leche</div><div class="detalle">Alto azúcar, bajo en cacao real</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Chocolate negro 70%+</div><div class="detalle">Antioxidantes, magnesio, menos azúcar</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Azúcar en café o té</div><div class="detalle">Picos de glucosa innecesarios</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Canela o vainilla natural</div><div class="detalle">Endulzan naturalmente, sin calorías extra</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Aderezos comerciales de botella</div><div class="detalle">Azúcar, sodio y conservadores</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Aceite de oliva + limón + hierbas</div><div class="detalle">Natural, fresco y lleno de sabor real</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Queso crema regular</div><div class="detalle">Alto en grasas saturadas y calorías</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Queso cottage o ricotta</div><div class="detalle">Proteína alta, grasa baja, cremoso</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Galletas o snacks procesados</div><div class="detalle">Azúcar, sodio y aditivos artificiales</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Frutos secos y semillas</div><div class="detalle">Grasas buenas, proteína y minerales</div></div>
+    </div>
+
+    <div class="sust-card">
+      <div class="sust-malo"><div class="label">❌ Evitar</div><div class="nombre">Sal de mesa refinada en exceso</div><div class="detalle">Retención de líquidos, presión alta</div></div>
+      <div class="sust-flecha">→</div>
+      <div class="sust-bueno"><div class="label">✓ Mejor opción</div><div class="nombre">Sal del Himalaya + hierbas frescas</div><div class="detalle">Minerales traza + sabor sin exceso de sodio</div></div>
+    </div>
+
+  </div>
+
+  <div class="tip-final">
+    <p>"No necesitas eliminar lo que amas. Solo necesitas encontrar la versión más saludable de ello."</p>
+    <span>— María Solís · 21 Días de Menús Saludables</span>
+  </div>
+</div>
+<div class="pie-pagina">Guía de Sustituciones Saludables · María Solís &nbsp;|&nbsp; 3</div>
+</div>
+
+</body>
+</html>

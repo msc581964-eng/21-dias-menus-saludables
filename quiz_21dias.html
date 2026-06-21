@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>¿Qué tan saludable comes realmente? · Quiz de María Solís</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --oscuro:   #0d1f15;
+  --card:     #122b1c;
+  --card2:    #1a3d28;
+  --borde:    #1a472a;
+  --menta:    #74c69d;
+  --menta2:   #52b081;
+  --menta-glow: rgba(116,198,157,.18);
+  --oro:      #d4a84b;
+  --blanco:   #ffffff;
+  --gris:     rgba(255,255,255,.55);
+  --gris2:    rgba(255,255,255,.12);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+  min-height:100vh;
+  background: var(--oscuro);
+  font-family:'Lato', sans-serif;
+  color: var(--blanco);
+  overflow-x: hidden;
+}
+
+/* ── FONDO ANIMADO ── */
+body::before {
+  content:'';
+  position:fixed; inset:0; z-index:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 10% 20%, rgba(26,71,42,.45) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 90% 80%, rgba(116,198,157,.08) 0%, transparent 70%),
+    var(--oscuro);
+}
+body::after {
+  content:'';
+  position:fixed; inset:0; z-index:0;
+  background-image: radial-gradient(circle, rgba(116,198,157,.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── CONTENEDOR PRINCIPAL ── */
+.quiz-wrap {
+  position: relative; z-index:1;
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding: 30px 16px;
+}
+
+.quiz-box {
+  width:100%; max-width:680px;
+}
+
+/* ── PANTALLA: INTRO ── */
+.pantalla { display:none; animation: fadeUp .5s ease both; }
+.pantalla.activa { display:block; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(22px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.intro-chip {
+  display:inline-block;
+  background: rgba(116,198,157,.12);
+  border: 1px solid rgba(116,198,157,.3);
+  color: var(--menta);
+  font-size:.68rem; font-weight:900; letter-spacing:3px;
+  text-transform:uppercase; padding:6px 18px; border-radius:30px;
+  margin-bottom:20px;
+}
+.intro-icono { font-size:3.6rem; display:block; margin-bottom:16px; line-height:1; }
+.intro-titulo {
+  font-family:'Playfair Display', serif; font-weight:900;
+  font-size:clamp(1.8rem, 5vw, 2.6rem);
+  line-height:1.15; margin-bottom:14px;
+  background: linear-gradient(135deg, #fff 30%, var(--menta));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.intro-sub {
+  font-size:1rem; color:var(--gris); line-height:1.7; margin-bottom:28px;
+}
+.intro-stats {
+  display:flex; gap:12px; justify-content:center;
+  flex-wrap:wrap; margin-bottom:32px;
+}
+.stat-chip {
+  background:var(--card2); border:1px solid var(--borde);
+  border-radius:50px; padding:8px 18px;
+  font-size:.78rem; font-weight:700; color:var(--menta);
+  display:flex; align-items:center; gap:7px;
+}
+.stat-chip span { color:var(--gris); font-weight:400; }
+
+/* ── BOTÓN PRINCIPAL ── */
+.btn-main {
+  display:inline-block; width:100%; max-width:340px;
+  background: linear-gradient(135deg, var(--menta2), var(--menta));
+  color: var(--oscuro);
+  font-family:'Lato', sans-serif; font-weight:900;
+  font-size:1.05rem; letter-spacing:.5px;
+  border:none; border-radius:50px; cursor:pointer;
+  padding:17px 40px;
+  box-shadow: 0 8px 30px rgba(116,198,157,.3);
+  transition: transform .15s, box-shadow .15s;
+  text-decoration:none; text-align:center;
+}
+.btn-main:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(116,198,157,.45);
+}
+.btn-main:active { transform:translateY(0); }
+
+.btn-ghost {
+  display:inline-block;
+  border:2px solid var(--menta); color:var(--menta);
+  background:transparent;
+  font-family:'Lato', sans-serif; font-weight:700;
+  font-size:.9rem; border-radius:50px; cursor:pointer;
+  padding:13px 36px; transition:all .2s;
+  text-decoration:none; text-align:center;
+}
+.btn-ghost:hover { background: rgba(116,198,157,.1); }
+
+/* ── CABECERA DEL QUIZ ── */
+.quiz-header { margin-bottom:28px; }
+.quiz-meta {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:12px;
+}
+.quiz-paso { font-size:.75rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--menta); }
+.quiz-num { font-size:.75rem; color:var(--gris); }
+
+.progreso-track {
+  height:5px; background:var(--gris2); border-radius:99px; overflow:hidden;
+}
+.progreso-barra {
+  height:100%; border-radius:99px;
+  background:linear-gradient(90deg, var(--menta2), var(--menta));
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 10px rgba(116,198,157,.5);
+}
+
+/* ── TARJETA DE PREGUNTA ── */
+.pregunta-card {
+  background:var(--card);
+  border:1px solid rgba(116,198,157,.12);
+  border-radius:20px; padding:32px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+.pregunta-icono { font-size:2rem; display:block; margin-bottom:12px; }
+.pregunta-texto {
+  font-family:'Playfair Display', serif; font-weight:700;
+  font-size:clamp(1.1rem, 3vw, 1.35rem);
+  line-height:1.4; margin-bottom:24px; color:var(--blanco);
+}
+
+/* ── OPCIONES ── */
+.opciones { display:flex; flex-direction:column; gap:10px; }
+
+.opcion {
+  display:flex; align-items:center; gap:14px;
+  background: var(--card2);
+  border:1.5px solid rgba(116,198,157,.1);
+  border-radius:14px; padding:16px 20px;
+  cursor:pointer; transition:all .2s;
+  text-align:left;
+}
+.opcion:hover {
+  border-color: rgba(116,198,157,.45);
+  background:rgba(116,198,157,.07);
+  transform:translateX(4px);
+}
+.opcion.seleccionada {
+  border-color:var(--menta);
+  background:rgba(116,198,157,.13);
+  box-shadow:0 0 0 1px var(--menta), 0 4px 20px rgba(116,198,157,.15);
+}
+
+.opcion-letra {
+  width:32px; height:32px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.75rem; font-weight:900;
+  background:rgba(116,198,157,.1);
+  border:1.5px solid rgba(116,198,157,.25);
+  color:var(--menta); transition:all .2s;
+}
+.opcion.seleccionada .opcion-letra {
+  background:var(--menta); color:var(--oscuro);
+  border-color:var(--menta);
+}
+.opcion-texto { font-size:.95rem; color:rgba(255,255,255,.85); line-height:1.4; transition:color .2s; }
+.opcion.seleccionada .opcion-texto { color:var(--blanco); font-weight:700; }
+
+/* ── NAVEGACIÓN ── */
+.quiz-nav {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:24px; gap:12px;
+}
+.btn-sig {
+  background:linear-gradient(135deg, var(--menta2), var(--menta));
+  color:var(--oscuro); font-family:'Lato', sans-serif;
+  font-weight:900; font-size:.9rem;
+  border:none; border-radius:50px; cursor:pointer;
+  padding:14px 32px; transition:all .2s;
+  display:flex; align-items:center; gap:8px;
+  box-shadow:0 6px 20px rgba(116,198,157,.25);
+  opacity:.45; pointer-events:none;
+}
+.btn-sig.listo {
+  opacity:1; pointer-events:all;
+}
+.btn-sig.listo:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(116,198,157,.4); }
+
+.btn-ant {
+  background:transparent; color:var(--gris);
+  border:1.5px solid var(--gris2);
+  font-family:'Lato', sans-serif; font-weight:700; font-size:.9rem;
+  border-radius:50px; cursor:pointer; padding:14px 24px; transition:all .2s;
+}
+.btn-ant:hover { border-color:var(--menta); color:var(--menta); }
+.btn-ant:disabled { opacity:.2; pointer-events:none; }
+
+/* ── RESULTADOS ── */
+.resultado-card {
+  background:var(--card);
+  border:1px solid rgba(116,198,157,.15);
+  border-radius:20px; overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.res-hero {
+  padding:40px 36px 32px;
+  position:relative; overflow:hidden;
+  text-align:center;
+}
+.res-hero::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, #1a472a 0%, #2d6a4f 60%, #52b081 100%);
+}
+.res-hero::after {
+  content:''; position:absolute; inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:20px 20px;
+}
+.res-hero > * { position:relative; z-index:1; }
+
+.res-badge {
+  display:inline-block;
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
+  color:#fff; font-size:.65rem; font-weight:900; letter-spacing:3px;
+  text-transform:uppercase; padding:6px 18px; border-radius:30px;
+  margin-bottom:14px;
+}
+.res-emoji { font-size:3rem; display:block; margin-bottom:10px; }
+.res-titulo {
+  font-family:'Playfair Display', serif; font-weight:900;
+  font-size:clamp(1.4rem, 4vw, 1.9rem);
+  color:#fff; margin-bottom:6px; line-height:1.2;
+}
+.res-subtitulo { font-size:.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.65); }
+
+.res-cuerpo { padding:32px 36px; }
+
+.res-puntaje {
+  display:flex; align-items:center; justify-content:center;
+  gap:12px; margin-bottom:24px;
+}
+.puntos-label { font-size:.75rem; color:var(--gris); font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+.puntos-barra {
+  flex:1; height:8px; background:var(--gris2); border-radius:99px; overflow:hidden;
+}
+.puntos-fill {
+  height:100%; border-radius:99px;
+  background:linear-gradient(90deg, var(--menta2), var(--menta));
+  box-shadow:0 0 12px rgba(116,198,157,.5);
+  transition:width 1s cubic-bezier(.4,0,.2,1) .3s;
+}
+.puntos-num { font-size:.8rem; font-weight:900; color:var(--menta); min-width:42px; text-align:right; }
+
+.res-mensaje {
+  background:rgba(116,198,157,.07); border:1px solid rgba(116,198,157,.15);
+  border-left:3px solid var(--menta);
+  border-radius:0 12px 12px 0;
+  padding:18px 22px; margin-bottom:24px;
+  font-size:1.02rem; line-height:1.75; color:rgba(255,255,255,.88);
+}
+
+.res-lista { list-style:none; margin-bottom:28px; }
+.res-lista li {
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:.92rem; color:rgba(255,255,255,.75); line-height:1.5;
+  padding:8px 0; border-bottom:1px solid var(--gris2);
+}
+.res-lista li:last-child { border:none; }
+.res-lista li::before { content:'✓'; color:var(--menta); font-weight:900; flex-shrink:0; margin-top:1px; }
+
+.res-cta-box {
+  background:linear-gradient(135deg, #1a472a, #2d6a4f);
+  border:1px solid rgba(116,198,157,.2);
+  border-radius:16px; padding:24px 28px; text-align:center;
+}
+.res-cta-titulo {
+  font-family:'Playfair Display', serif; font-weight:700;
+  font-size:1.1rem; color:#fff; margin-bottom:6px;
+}
+.res-cta-sub { font-size:.85rem; color:rgba(255,255,255,.65); margin-bottom:18px; line-height:1.5; }
+
+.btn-cta {
+  display:inline-block; width:100%;
+  background:linear-gradient(135deg, var(--oro), #f0c060);
+  color:#1a1a00; font-family:'Lato', sans-serif;
+  font-weight:900; font-size:1.05rem; letter-spacing:.3px;
+  border:none; border-radius:50px; cursor:pointer;
+  padding:18px 36px; text-decoration:none;
+  box-shadow:0 8px 30px rgba(212,168,75,.35);
+  transition:all .2s; text-align:center; display:block;
+}
+.btn-cta:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(212,168,75,.5); }
+
+.btn-reiniciar {
+  display:block; text-align:center; margin-top:16px;
+  color:var(--gris); font-size:.82rem; cursor:pointer;
+  background:none; border:none; font-family:'Lato',sans-serif;
+  text-decoration:underline; text-underline-offset:3px; transition:color .2s;
+}
+.btn-reiniciar:hover { color:var(--menta); }
+
+/* ── FIRMA ── */
+.firma {
+  text-align:center; margin-top:28px;
+  font-size:.75rem; color:rgba(255,255,255,.25);
+  letter-spacing:1px;
+}
+.firma a { color:rgba(116,198,157,.45); text-decoration:none; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:480px){
+  .pregunta-card { padding:24px 20px; }
+  .res-hero { padding:32px 24px 26px; }
+  .res-cuerpo { padding:24px 22px; }
+  .res-cta-box { padding:20px 20px; }
+  .quiz-nav { flex-direction:column-reverse; }
+  .btn-sig, .btn-ant { width:100%; justify-content:center; }
+}
+</style>
+</head>
+<body>
+<div class="quiz-wrap">
+  <div class="quiz-box">
+
+    <!-- ══ PANTALLA INTRO ══ -->
+    <div class="pantalla activa" id="pantalla-intro">
+      <div style="text-align:center;">
+        <div class="intro-chip">✦ Quiz gratuito · 2 minutos</div>
+        <span class="intro-icono">🥗</span>
+        <h1 class="intro-titulo">¿Qué tan saludable<br>comes realmente?</h1>
+        <p class="intro-sub">Responde estas 7 preguntas y descubre en qué punto<br>está tu alimentación hoy — y qué necesitas cambiar.</p>
+        <div class="intro-stats">
+          <div class="stat-chip">📋 <span>7 preguntas</span></div>
+          <div class="stat-chip">⏱️ <span>2 minutos</span></div>
+          <div class="stat-chip">🎯 <span>Resultado personalizado</span></div>
+        </div>
+        <button class="btn-main" onclick="irAPregunta(1)">🚀 Empezar el Quiz</button>
+        <p style="margin-top:16px; font-size:.78rem; color:var(--gris);">
+          Creado por <strong style="color:var(--menta);">María Solís</strong> · Autora de 21 Días de Menús Saludables
+        </p>
+      </div>
+    </div>
+
+    <!-- ══ PANTALLA PREGUNTAS ══ -->
+    <div class="pantalla" id="pantalla-quiz">
+      <div class="quiz-header">
+        <div class="quiz-meta">
+          <span class="quiz-paso" id="paso-label">Pregunta 1 de 7</span>
+          <span class="quiz-num" id="pct-label">0% completado</span>
+        </div>
+        <div class="progreso-track">
+          <div class="progreso-barra" id="barra-progreso" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="pregunta-card" id="pregunta-card">
+        <span class="pregunta-icono" id="p-icono"></span>
+        <p class="pregunta-texto" id="p-texto"></p>
+        <div class="opciones" id="opciones-wrap"></div>
+        <div class="quiz-nav">
+          <button class="btn-ant" id="btn-ant" onclick="navegarPregunta(-1)" disabled>← Anterior</button>
+          <button class="btn-sig" id="btn-sig" onclick="navegarPregunta(1)">
+            Siguiente <span>→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PANTALLA RESULTADO ══ -->
+    <div class="pantalla" id="pantalla-resultado">
+      <div class="resultado-card">
+        <div class="res-hero" id="res-hero">
+          <div class="res-badge" id="res-badge"></div>
+          <span class="res-emoji" id="res-emoji"></span>
+          <h2 class="res-titulo" id="res-titulo"></h2>
+          <p class="res-subtitulo" id="res-subtitulo"></p>
+        </div>
+        <div class="res-cuerpo">
+          <div class="res-puntaje">
+            <span class="puntos-label">Tu nivel</span>
+            <div class="puntos-barra"><div class="puntos-fill" id="puntos-fill" style="width:0%"></div></div>
+            <span class="puntos-num" id="puntos-num"></span>
+          </div>
+          <div class="res-mensaje" id="res-mensaje"></div>
+          <ul class="res-lista" id="res-lista"></ul>
+          <div class="res-cta-box">
+            <p class="res-cta-titulo" id="cta-titulo"></p>
+            <p class="res-cta-sub" id="cta-sub"></p>
+            <a href="index.html" class="btn-cta">🌿 Quiero mis 21 Días →</a>
+          </div>
+          <button class="btn-reiniciar" onclick="reiniciar()">↩ Volver a hacer el quiz</button>
+        </div>
+      </div>
+      <p class="firma">Quiz gratuito creado por <a href="index.html">María Solís</a> · 21 Días de Menús Saludables</p>
+    </div>
+
+  </div><!-- /quiz-box -->
+</div><!-- /quiz-wrap -->
+
+<script>
+/* ── DATOS DEL QUIZ ── */
+const preguntas = [
+  {
+    icono: '🥦',
+    texto: '¿Cuántas veces a la semana comes verduras?',
+    opciones: [
+      { txt: 'Casi nunca',    pts: 0 },
+      { txt: '1-2 veces',     pts: 1 },
+      { txt: '3-4 veces',     pts: 2 },
+      { txt: 'Todos los días',pts: 3 },
+    ]
+  },
+  {
+    icono: '🍫',
+    texto: '¿Qué haces cuando tienes antojo de algo dulce?',
+    opciones: [
+      { txt: 'Me lo como sin pensarlo',      pts: 0 },
+      { txt: 'Depende del día',              pts: 1 },
+      { txt: 'Lo ignoro pero sufro',         pts: 2 },
+      { txt: 'Busco una opción más sana',    pts: 3 },
+    ]
+  },
+  {
+    icono: '🌅',
+    texto: '¿Cómo describes tu desayuno típico?',
+    opciones: [
+      { txt: 'No desayuno',                         pts: 0 },
+      { txt: 'Café y ya',                           pts: 1 },
+      { txt: 'Algo rápido de lo que hay',           pts: 2 },
+      { txt: 'Balanceado con proteína y fruta',     pts: 3 },
+    ]
+  },
+  {
+    icono: '💧',
+    texto: '¿Cuánta agua tomas al día?',
+    opciones: [
+      { txt: 'Casi nada',      pts: 0 },
+      { txt: '1-2 vasos',      pts: 1 },
+      { txt: '3-5 vasos',      pts: 2 },
+      { txt: 'Más de 6 vasos', pts: 3 },
+    ]
+  },
+  {
+    icono: '😌',
+    texto: '¿Cómo te sientes después de comer?',
+    opciones: [
+      { txt: 'Hinchada y cansada',     pts: 0 },
+      { txt: 'Varía mucho',            pts: 1 },
+      { txt: 'Normal',                 pts: 2 },
+      { txt: 'Ligera y con energía',   pts: 3 },
+    ]
+  },
+  {
+    icono: '🍟',
+    texto: '¿Qué tan seguido comes comida procesada o fast food?',
+    opciones: [
+      { txt: 'Casi todos los días',        pts: 0 },
+      { txt: '3-4 veces por semana',       pts: 1 },
+      { txt: '1-2 veces por semana',       pts: 2 },
+      { txt: 'Muy rara vez',               pts: 3 },
+    ]
+  },
+  {
+    icono: '🚧',
+    texto: '¿Cuál es tu mayor obstáculo para comer sano?',
+    opciones: [
+      { txt: 'No sé qué cocinar',          pts: 1 },
+      { txt: 'No tengo tiempo',            pts: 1 },
+      { txt: 'Es muy caro',                pts: 2 },
+      { txt: 'La familia no come sano',    pts: 2 },
+    ]
+  },
+];
+
+/* ── RESULTADOS ── */
+const resultados = [
+  {
+    rango: [0, 8],
+    badge:     '🌱 Tu diagnóstico',
+    emoji:     '🌱',
+    titulo:    'La Principiante Saludable',
+    subtitulo: 'Tienes buena intención · ¡Ahora necesitas el plan!',
+    mensaje:   'Tienes buena intención pero los hábitos aún no te acompañan. ¡La buena noticia es que <strong>21 días son suficientes para transformar tu alimentación por completo!</strong> No necesitas fuerza de voluntad —necesitas un sistema.',
+    lista: [
+      'Tus elecciones alimentarias te están quitando energía sin que lo notes.',
+      'Con pequeños cambios diarios puedes ver resultados en 7 días.',
+      'El plan de 21 Días te da exactamente lo que te falta: estructura y recetas fáciles.',
+    ],
+    ctaTitulo: '¿Lista para el cambio real?',
+    ctaSub:    'El plan de 21 Días de Menús Saludables está diseñado especialmente para ti. Paso a paso, sin complicaciones.',
+  },
+  {
+    rango: [9, 15],
+    badge:     '🌿 Tu diagnóstico',
+    emoji:     '🌿',
+    titulo:    'La Casi Saludable',
+    subtitulo: 'Vas por buen camino · Solo te faltan las herramientas',
+    mensaje:   'Vas por buen camino pero te faltan herramientas para ser consistente. Con <strong>un plan estructurado de 21 días</strong> puedes llegar al siguiente nivel y sentirte mejor de lo que te has sentido en años.',
+    lista: [
+      'Ya tienes la mentalidad correcta — eso es lo más difícil.',
+      'La inconsistencia es tu mayor enemigo. Un plan diario lo resuelve.',
+      'Con las recetas correctas puedes comer sano sin sacrificar el sabor.',
+    ],
+    ctaTitulo: '¡Das el paso definitivo!',
+    ctaSub:    'Estás a 21 días de tener el cuerpo y la energía que mereces. Solo necesitas el plan.',
+  },
+  {
+    rango: [16, 21],
+    badge:     '⭐ Tu diagnóstico',
+    emoji:     '⭐',
+    titulo:    'La Saludable en Construcción',
+    subtitulo: 'Tienes una base sólida · Llévala al 100%',
+    mensaje:   'Ya tienes una base sólida — ¡felicidades! Ahora necesitas <strong>un plan profesional que lleve tu alimentación al 100%</strong>. Los 21 Días de Menús Saludables son exactamente eso: el salto de nivel que te falta.',
+    lista: [
+      'Tus hábitos actuales son buenos, pero hay espacio para optimizarlos.',
+      'Un plan de comidas profesional te saca de la rutina y te da variedad.',
+      'Con 21 días de menús nuevos, tu motivación se dispara y los resultados se notan.',
+    ],
+    ctaTitulo: '¡Lleva tu salud al siguiente nivel!',
+    ctaSub:    'Ya tienes la base. El plan de 21 Días te da la estructura, las recetas y los resultados que buscas.',
+  },
+];
+
+/* ── ESTADO ── */
+let preguntaActual = 1;
+let respuestas = new Array(preguntas.length).fill(null);
+
+const letras = ['A', 'B', 'C', 'D'];
+
+/* ── FUNCIONES ── */
+function irAPregunta(num) {
+  preguntaActual = num;
+  mostrarPantalla('pantalla-quiz');
+  renderPregunta();
+}
+
+function mostrarPantalla(id) {
+  document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('activa'));
+  const el = document.getElementById(id);
+  el.classList.add('activa');
+  // re-trigger animation
+  el.style.animation = 'none';
+  el.offsetHeight;
+  el.style.animation = '';
+}
+
+function renderPregunta() {
+  const idx = preguntaActual - 1;
+  const q = preguntas[idx];
+  const total = preguntas.length;
+
+  // Progreso
+  const pct = Math.round(((preguntaActual - 1) / total) * 100);
+  document.getElementById('barra-progreso').style.width = pct + '%';
+  document.getElementById('paso-label').textContent = `Pregunta ${preguntaActual} de ${total}`;
+  document.getElementById('pct-label').textContent = pct + '% completado';
+
+  // Contenido
+  document.getElementById('p-icono').textContent = q.icono;
+  document.getElementById('p-texto').textContent = q.texto;
+
+  // Opciones
+  const wrap = document.getElementById('opciones-wrap');
+  wrap.innerHTML = '';
+  q.opciones.forEach((op, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opcion' + (respuestas[idx] === i ? ' seleccionada' : '');
+    btn.innerHTML = `<span class="opcion-letra">${letras[i]}</span>
+                     <span class="opcion-texto">${op.txt}</span>`;
+    btn.onclick = () => seleccionarOpcion(i);
+    wrap.appendChild(btn);
+  });
+
+  // Nav
+  document.getElementById('btn-ant').disabled = (preguntaActual === 1);
+  actualizarBtnSig();
+
+  // Card animation
+  const card = document.getElementById('pregunta-card');
+  card.style.animation = 'none';
+  card.offsetHeight;
+  card.style.animation = 'fadeUp .35s ease both';
+}
+
+function seleccionarOpcion(idx_op) {
+  const idx = preguntaActual - 1;
+  respuestas[idx] = idx_op;
+
+  document.querySelectorAll('.opcion').forEach((btn, i) => {
+    btn.classList.toggle('seleccionada', i === idx_op);
+  });
+
+  actualizarBtnSig();
+}
+
+function actualizarBtnSig() {
+  const idx = preguntaActual - 1;
+  const btn = document.getElementById('btn-sig');
+  const hayRespuesta = respuestas[idx] !== null;
+
+  if (preguntaActual === preguntas.length) {
+    btn.innerHTML = hayRespuesta ? 'Ver mi resultado 🎯' : 'Ver mi resultado <span>→</span>';
+  } else {
+    btn.innerHTML = 'Siguiente <span>→</span>';
+  }
+
+  btn.classList.toggle('listo', hayRespuesta);
+}
+
+function navegarPregunta(dir) {
+  const siguiente = preguntaActual + dir;
+
+  if (siguiente > preguntas.length) {
+    mostrarResultado();
+    return;
+  }
+  if (siguiente < 1) return;
+
+  preguntaActual = siguiente;
+  renderPregunta();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function calcularPuntos() {
+  let total = 0;
+  respuestas.forEach((resp, i) => {
+    if (resp !== null) total += preguntas[i].opciones[resp].pts;
+  });
+  return total;
+}
+
+function mostrarResultado() {
+  const pts = calcularPuntos();
+  const maxPts = preguntas.reduce((sum, q) => sum + Math.max(...q.opciones.map(o => o.pts)), 0);
+
+  const res = resultados.find(r => pts >= r.rango[0] && pts <= r.rango[1]) || resultados[2];
+
+  document.getElementById('res-badge').textContent = res.badge;
+  document.getElementById('res-emoji').textContent = res.emoji;
+  document.getElementById('res-titulo').textContent = res.titulo;
+  document.getElementById('res-subtitulo').textContent = res.subtitulo;
+  document.getElementById('res-mensaje').innerHTML = res.mensaje;
+  document.getElementById('cta-titulo').textContent = res.ctaTitulo;
+  document.getElementById('cta-sub').textContent = res.ctaSub;
+
+  const lista = document.getElementById('res-lista');
+  lista.innerHTML = res.lista.map(item => `<li>${item}</li>`).join('');
+
+  const pct = Math.round((pts / maxPts) * 100);
+  document.getElementById('puntos-num').textContent = pts + '/' + maxPts + ' pts';
+
+  mostrarPantalla('pantalla-resultado');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Animate bar after render
+  setTimeout(() => {
+    document.getElementById('puntos-fill').style.width = pct + '%';
+  }, 100);
+}
+
+function reiniciar() {
+  respuestas = new Array(preguntas.length).fill(null);
+  preguntaActual = 1;
+  mostrarPantalla('pantalla-intro');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
