@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21 Días de Menús Saludables · App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-osc:#1e5631; --verde:#2f8050; --verde-cla:#9ed8b3;
+    --bg:#f1f8f3; --bg2:#e3f1e8; --card:#ffffff;
+    --texto:#1f3b2a; --suave:#5d7a68; --linea:#dcebe0; --linea:#d7ebdd;
+    --dorado:#e0a93f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--texto);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:680px;margin:0 auto;padding:0 16px 60px;}
+  /* HEADER */
+  .top{background:linear-gradient(160deg,var(--verde-osc),var(--verde));color:#fff;padding:30px 22px 26px;border-radius:0 0 26px 26px;text-align:center;box-shadow:0 6px 24px rgba(30,86,49,.18);}
+  .top .eyebrow{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;opacity:.85;font-weight:700;}
+  .top h1{font-family:'Playfair Display',serif;font-size:1.7rem;margin:8px 0 4px;line-height:1.15;}
+  .top .autor{font-size:.92rem;opacity:.9;font-style:italic;}
+  /* PROGRESO */
+  .progreso{background:var(--card);border-radius:18px;padding:18px 20px;margin:-18px auto 22px;max-width:648px;box-shadow:0 4px 18px rgba(30,86,49,.10);position:relative;}
+  .progreso .ptxt{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;}
+  .progreso .ptxt small{color:var(--suave);font-weight:600;font-size:.85rem;}
+  .barra{height:12px;background:var(--bg2);border-radius:8px;margin-top:10px;overflow:hidden;}
+  .barra > div{height:100%;background:linear-gradient(90deg,var(--verde),var(--verde-cla));border-radius:8px;width:0;transition:width .5s ease;}
+  .frase{margin-top:12px;font-style:italic;color:var(--verde-osc);font-size:.92rem;text-align:center;}
+  /* NAV DIAS */
+  .semana{font-weight:800;color:var(--verde-osc);font-size:.8rem;letter-spacing:1px;text-transform:uppercase;margin:18px 4px 8px;}
+  .dias{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;}
+  .dchip{aspect-ratio:1;border:none;background:var(--card);border:1.5px solid var(--linea);border-radius:12px;font-family:inherit;font-weight:700;font-size:.95rem;color:var(--texto);cursor:pointer;position:relative;transition:.15s;display:flex;align-items:center;justify-content:center;}
+  .dchip:hover{border-color:var(--verde);}
+  .dchip.activo{background:var(--verde);color:#fff;border-color:var(--verde);transform:scale(1.05);}
+  .dchip.hecho{background:var(--verde-cla);border-color:var(--verde-cla);color:var(--verde-osc);}
+  .dchip.hecho.activo{background:var(--verde);color:#fff;}
+  .dchip .ck{position:absolute;top:-5px;right:-5px;background:var(--dorado);color:#fff;width:18px;height:18px;border-radius:50%;font-size:.7rem;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.2);}
+  /* DIA */
+  .diahead{text-align:center;margin:26px 0 6px;}
+  .diahead .et{font-size:.74rem;letter-spacing:2px;text-transform:uppercase;color:var(--verde);font-weight:800;}
+  .diahead h2{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--verde-osc);}
+  .comida{background:var(--card);border-radius:18px;padding:20px;margin-top:16px;box-shadow:0 3px 14px rgba(30,86,49,.07);border:1px solid var(--linea);}
+  .ctipo{display:inline-flex;align-items:center;gap:7px;background:var(--bg2);color:var(--verde-osc);font-weight:800;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;}
+  .cnombre{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--texto);margin:12px 0 14px;line-height:1.25;}
+  .subt{font-weight:800;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;color:var(--verde);margin:4px 0 7px;}
+  .ings{list-style:none;margin-bottom:14px;}
+  .ings li{padding:5px 0 5px 22px;position:relative;border-bottom:1px dashed var(--linea);font-size:.95rem;}
+  .ings li:last-child{border-bottom:none;}
+  .ings li::before{content:"";position:absolute;left:4px;top:13px;width:7px;height:7px;border-radius:50%;background:var(--verde-cla);}
+  .prep{font-size:.96rem;color:var(--suave);background:var(--bg);border-radius:12px;padding:12px 14px;}
+  /* AGUA */
+  .agua{background:var(--card);border-radius:18px;padding:18px 20px;margin-top:16px;border:1px solid var(--linea);box-shadow:0 3px 14px rgba(30,86,49,.07);}
+  .agua h3{font-size:.95rem;color:var(--verde-osc);margin-bottom:4px;}
+  .agua p{font-size:.82rem;color:var(--suave);margin-bottom:12px;}
+  .vasos{display:flex;gap:8px;flex-wrap:wrap;}
+  .vaso{font-size:1.5rem;cursor:pointer;filter:grayscale(1) opacity(.4);transition:.15s;user-select:none;}
+  .vaso.on{filter:none;transform:scale(1.1);}
+  /* BOTON COMPLETAR */
+  .completar{width:100%;margin-top:20px;padding:16px;border:none;border-radius:14px;background:var(--verde);color:#fff;font-family:inherit;font-weight:800;font-size:1.02rem;cursor:pointer;box-shadow:0 4px 14px rgba(47,128,80,.3);transition:.15s;}
+  .completar:hover{background:var(--verde-osc);}
+  .completar.listo{background:var(--verde-cla);color:var(--verde-osc);}
+  /* NAV ABAJO */
+  .navpie{display:flex;justify-content:space-between;gap:12px;margin-top:18px;}
+  .navpie button{flex:1;padding:13px;border:1.5px solid var(--linea);background:var(--card);border-radius:12px;font-family:inherit;font-weight:700;color:var(--verde-osc);cursor:pointer;}
+  .navpie button:disabled{opacity:.4;cursor:not-allowed;}
+  footer{text-align:center;margin-top:34px;color:var(--suave);font-size:.85rem;}
+  footer strong{color:var(--verde-osc);font-family:'Playfair Display',serif;font-size:1.05rem;display:block;margin-top:6px;}
+  .celebra{text-align:center;background:linear-gradient(160deg,var(--verde-osc),var(--verde));color:#fff;border-radius:18px;padding:24px;margin-top:16px;display:none;}
+  .celebra.show{display:block;}
+  .celebra h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:6px;}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="eyebrow">Tu camino saludable</div>
+  <h1>21 Días de Menús Saludables</h1>
+  <div class="autor">por María Solís</div>
+</div>
+
+<div class="wrap">
+  <div class="progreso">
+    <div class="ptxt"><span id="pcount">0 de 21 días</span><small id="ppct">0%</small></div>
+    <div class="barra"><div id="pbar"></div></div>
+    <div class="frase" id="frase">Hoy es un gran día para cuidarte. 🌱</div>
+  </div>
+
+  <div id="navdias"></div>
+
+  <div id="contenido"></div>
+
+  <div class="navpie">
+    <button id="prev">← Día anterior</button>
+    <button id="next">Día siguiente →</button>
+  </div>
+
+  <footer>
+    Con todo mi cariño,
+    <strong>María Solís</strong>
+    Una mujer que eligió cuidarse con amor 🌿
+  </footer>
+</div>
+
+<script>
+  const DIAS = [{"dia": 1, "comidas": [{"tipo": "Desayuno", "nombre": "Huevos Revueltos con Espinacas y Aguacate", "ingredientes": ["2 huevos (100 g)", "1/2 aguacate (75 g)", "1/2 taza de espinacas frescas (30 g)", "Sal y pimienta al gusto"], "preparacion": "Batir los huevos y cocinar en una sartén antiadherente con las espinacas. Servir con el aguacate cortado."}, {"tipo": "Almuerzo", "nombre": "Ensalada de Pollo a la Parrilla", "ingredientes": ["150 g de pechuga de pollo a la parrilla", "50 g de lechuga", "30 g de tomate", "20 g de pepino", "1 cucharada de aceite de oliva", "Sal y vinagre al gusto"], "preparacion": "Cortar el pollo en tiras y mezclar con las verduras. Aliñar con aceite, sal y vinagre."}, {"tipo": "Cena", "nombre": "Salmón al Horno con Brócoli", "ingredientes": ["150 g de salmón", "1 taza de brócoli al vapor (150 g)", "1 cucharadita de aceite de oliva", "Sal y pimienta al gusto"], "preparacion": "Hornear el salmón a 180 °C durante 15 minutos. Servir con brócoli al vapor y rociar con aceite de oliva."}]}, {"dia": 2, "comidas": [{"tipo": "Desayuno", "nombre": "Claras de Huevo con Champiñones y Queso", "ingredientes": ["2 claras de huevo y 1 huevo entero (120 g)", "1/4 taza de champiñones (30 g)", "1 rebanada de queso bajo en grasa (30 g)", "Sal y pimienta al gusto"], "preparacion": "Saltear los champiñones y luego agregar los huevos. Cocinar hasta que estén listos y añadir el queso."}, {"tipo": "Almuerzo", "nombre": "Tazón de Atún", "ingredientes": ["150 g de atún en agua, escurrido", "1 cucharada de mayonesa ligera", "50 g de apio, picado", "30 g de cebolla, picada", "1 hoja de lechuga para envolver"], "preparacion": "Mezclar atún con mayonesa, apio y cebolla. Servir en la lechuga como envoltura."}, {"tipo": "Cena", "nombre": "Pechuga de Pavo a la Plancha", "ingredientes": ["150 g de pechuga de pavo", "1 taza de espárragos al vapor (130 g)", "1 cucharadita de aceite de oliva", "Sal y pimienta al gusto"], "preparacion": "Cocinar la pechuga a la plancha. Servir con espárragos al vapor y rociar con aceite de oliva."}]}, {"dia": 3, "comidas": [{"tipo": "Desayuno", "nombre": "Batido de Proteínas", "ingredientes": ["1 scoop de proteína en polvo (30 g)", "200 ml de agua o leche de almendra sin azúcar", "1 cucharada de mantequilla de almendra (16 g)"], "preparacion": "Mezclar todos los ingredientes en una licuadora hasta obtener una mezcla suave."}, {"tipo": "Almuerzo", "nombre": "Ensalada César con Pollo", "ingredientes": ["150 g de pollo a la parrilla, cortado en tiras", "50 g de lechuga romana", "20 g de queso parmesano rallado", "1 cucharada de aderezo César bajo en carbohidratos"], "preparacion": "Mezclar los ingredientes en un tazón y añadir el aderezo."}, {"tipo": "Cena", "nombre": "Carne de Res a la Parrilla con Col Rizada", "ingredientes": ["150 g de carne de res", "1 taza de col rizada (70 g)", "1 cucharadita de aceite de oliva", "Sal y pimienta al gusto"], "preparacion": "Cocinar la carne a la parrilla. Saltear la col rizada en aceite de oliva y servir junto a la carne."}]}, {"dia": 4, "comidas": [{"tipo": "Desayuno", "nombre": "Yogur Griego con Nueces", "ingredientes": ["150 g de yogur griego natural", "1/4 taza de nueces (30 g)", "1 cucharadita de canela"], "preparacion": "Mezclar todos los ingredientes en un tazón."}, {"tipo": "Almuerzo", "nombre": "Sopa de Verduras", "ingredientes": ["1 taza de caldo de pollo", "100 g de espinacas", "50 g de brócoli", "50 g de calabacín, picado"], "preparacion": "Hervir todos los ingredientes en el caldo hasta que las verduras estén tiernas."}, {"tipo": "Cena", "nombre": "Pez Espada a la Plancha con Judías Verdes", "ingredientes": ["150 g de pez espada", "1 taza de judías verdes al vapor (150 g)", "1 cucharadita de aceite de oliva", "Sal y pimienta al gusto"], "preparacion": "Cocinar el pez espada a la plancha y servir con judías verdes al vapor."}]}, {"dia": 5, "comidas": [{"tipo": "Desayuno", "nombre": "Omelette de Verduras", "ingredientes": ["2 huevos (100 g)", "50 g de pimientos, picados", "30 g de cebolla, picada", "Sal y pimienta al gusto"], "preparacion": "Batir los huevos y cocinar con los pimientos y cebolla en una sartén."}, {"tipo": "Almuerzo", "nombre": "Wrap de Lechuga con Pollo", "ingredientes": ["100 g de pollo desmenuzado", "50 g de zanahoria rallada", "30 g de pepino, picado", "1 cucharada de salsa de soya baja en sodio"], "preparacion": "Mezclar todos los ingredientes y servir en hojas de lechuga como envoltura."}, {"tipo": "Cena", "nombre": "Chuleta de Cerdo a la Parrilla con Coliflor", "ingredientes": ["150 g de chuleta de cerdo", "1 taza de coliflor asada (150 g)", "1 cucharadita de aceite de oliva", "Sal y pimienta al gusto"], "preparacion": "Cocinar la chuleta a la parrilla y servir con coliflor asada."}]}, {"dia": 6, "comidas": [{"tipo": "Desayuno", "nombre": "Tostadas Integrales con Aguacate y Huevo Pochado", "ingredientes": ["2 rebanadas de pan integral", "1/2 aguacate", "1 huevo pochado", "Sal, pimienta y chile en hojuelas al gusto"], "preparacion": "Tostar el pan, untar el aguacate, colocar el huevo pochado encima y sazonar. Fresco y nutritivo para empezar el día."}, {"tipo": "Almuerzo", "nombre": "Ensalada de Camarones con Mango", "ingredientes": ["150 g de camarones cocidos", "1/2 mango en cubos", "50 g de lechuga", "30 g de pepino", "1 cucharada de aceite de oliva", "Jugo de 1 limón"], "preparacion": "Mezclar los camarones con el mango, lechuga y pepino. Aliñar con aceite de oliva y jugo de limón. ¡Fresco y delicioso!"}, {"tipo": "Cena", "nombre": "Pollo al Limón con Espárragos", "ingredientes": ["150 g de pechuga de pollo", "1 taza de espárragos", "Jugo de 1 limón", "1 cucharadita de aceite de oliva", "Sal, pimienta y ajo al gusto"], "preparacion": "Marinar el pollo con limón y ajo por 10 minutos. Cocinar a la plancha hasta dorar. Servir con espárragos al vapor."}]}, {"dia": 7, "comidas": [{"tipo": "Desayuno", "nombre": "Avena con Frutas y Semillas", "ingredientes": ["40 g de avena", "200 ml de leche de almendra", "1 plátano (80 g)", "50 g de fresas", "1 cucharada de semillas de chía (15 g)"], "preparacion": "Cocinar la avena con la leche de almendra hasta que espese. Servir con rodajas de plátano, fresas y espolvorear las semillas de chía."}, {"tipo": "Almuerzo", "nombre": "Filete de Salmón al Horno con Espárragos", "ingredientes": ["120 g de filete de salmón", "Jugo de medio limón (20 ml)", "1 diente de ajo", "1 cucharadita de eneldo seco (5 g)", "150 g de espárragos", "80 g de arroz integral cocido"], "preparacion": "Marinar el salmón con limón, ajo y eneldo. Hornear a 180°C por 15 minutos. Acompañar con espárragos al vapor y arroz integral."}, {"tipo": "Cena", "nombre": "Wrap de Pavo y Vegetales", "ingredientes": ["1 tortilla integral (30 g)", "80 g de pechuga de pavo cocida", "30 g de espinacas frescas", "30 g de zanahoria rallada", "20 g de aguacate", "1 cucharada de hummus (15 g)"], "preparacion": "Colocar el hummus sobre la tortilla integral, agregar el pavo, las espinacas, la zanahoria y el aguacate en rebanadas. Enrollar y servir."}]}, {"dia": 8, "comidas": [{"tipo": "Desayuno", "nombre": "Smoothie Bowl de Frutos Rojos", "ingredientes": ["150 g de frutos rojos (fresas, frambuesas, arándanos)", "200 g de yogur natural", "30 g de granola", "15 g de almendras", "10 g de coco rallado"], "preparacion": "Licuar los frutos rojos con el yogur natural hasta obtener una mezcla espesa. Decorar con granola, almendras y coco rallado."}, {"tipo": "Almuerzo", "nombre": "Pollo Salteado con Verduras", "ingredientes": ["120 g de pechuga de pollo", "80 g de brócoli", "50 g de zanahoria", "50 g de calabacín", "1 cucharada de salsa de soya baja en sodio", "100 g de papa"], "preparacion": "Cortar el pollo en tiras y saltear junto con las verduras. Agregar salsa de soya al gusto. Servir con papa al horno espolvoreada con hierbas."}, {"tipo": "Cena", "nombre": "Ensalada de Garbanzos y Espinacas", "ingredientes": ["100 g de garbanzos cocidos", "30 g de espinacas frescas", "50 g de tomates cherry", "30 g de pepino", "15 g de aceitunas negras", "1 cucharada de aceite de oliva", "Jugo de medio limón"], "preparacion": "Mezclar los garbanzos con las espinacas, tomates, pepino y aceitunas. Aliñar con aceite de oliva y jugo de limón."}]}, {"dia": 9, "comidas": [{"tipo": "Desayuno", "nombre": "Tostadas de Aguacate y Huevo Poché", "ingredientes": ["2 rebanadas de pan integral (60 g)", "50 g de aguacate", "1 huevo (50 g)", "5 g de semillas de sésamo", "Jugo de 1 toronja (150 ml)"], "preparacion": "Untar el aguacate sobre las rebanadas de pan integral. Cocinar el huevo en agua hirviendo hasta que la clara esté firme. Colocar el huevo sobre las tostadas y espolvorear semillas de sésamo."}, {"tipo": "Almuerzo", "nombre": "Filete de Res con Puré de Camote", "ingredientes": ["150 g de filete de res", "1 camote (100 g)", "50 g de espinacas", "10 g de nueces", "10 g de arándanos secos"], "preparacion": "Cocinar el filete con sal marina y pimienta. Acompañar con puré de camote y ensalada de espinacas con nueces y arándanos secos."}, {"tipo": "Cena", "nombre": "Sopa Minestrone", "ingredientes": ["80 g de calabacita", "50 g de zanahoria", "50 g de apio", "100 g de tomate", "30 g de pasta integral"], "preparacion": "Cocinar las verduras picadas en caldo de verduras y agregar la pasta integral. Cocinar hasta que la pasta esté al dente."}]}, {"dia": 10, "comidas": [{"tipo": "Desayuno", "nombre": "Pancakes de Avena y Plátano", "ingredientes": ["40 g de avena", "1 plátano (80 g)", "1 huevo (50 g)", "1 cucharadita de miel (5 g)", "1 taza de café negro"], "preparacion": "Triturar el plátano y mezclar con la avena y el huevo. Cocinar en una sartén antiadherente y servir con miel."}, {"tipo": "Almuerzo", "nombre": "Tilapia al Vapor con Verduras", "ingredientes": ["150 g de tilapia", "10 g de cilantro fresco", "10 g de perejil", "80 g de arroz basmati", "50 g de zanahorias", "50 g de ejotes"], "preparacion": "Cocinar la tilapia con cilantro y perejil. Acompañar con arroz basmati y verduras salteadas."}, {"tipo": "Cena", "nombre": "Ensalada Caprese con Pan Integral", "ingredientes": ["100 g de tomate", "50 g de mozzarella", "10 g de albahaca fresca", "1 cucharada de aceite de oliva", "1 cucharadita de vinagre balsámico", "1 rebanada de pan integral"], "preparacion": "Alternar rodajas de tomate y mozzarella en un plato. Decorar con hojas de albahaca y aderezar con aceite de oliva y vinagre balsámico."}]}, {"dia": 11, "comidas": [{"tipo": "Desayuno", "nombre": "Tostadas con Huevo y Espinaca", "ingredientes": ["2 rebanadas de pan integral (60 g)", "1 huevo (50 g)", "30 g de espinacas salteadas", "10 g de queso rallado", "Sal y pimienta al gusto"], "preparacion": "Tostar el pan, agregar espinacas salteadas y el huevo frito encima. Decorar con queso rallado."}, {"tipo": "Almuerzo", "nombre": "Pollo a la Naranja con Ensalada Fresca", "ingredientes": ["120 g de pechuga de pollo", "Jugo de una naranja (50 ml)", "1 cucharadita de miel (5 g)", "80 g de lechuga", "30 g de zanahoria rallada", "20 g de pepino"], "preparacion": "Cocinar el pollo a la plancha con el jugo de naranja y miel. Acompañar con ensalada fresca."}, {"tipo": "Cena", "nombre": "Sopa de Verduras con Pan Integral", "ingredientes": ["100 g de calabacita", "50 g de zanahoria", "50 g de apio", "100 ml de caldo de pollo", "1 rebanada de pan integral"], "preparacion": "Cocinar las verduras en el caldo hasta que estén suaves. Servir con pan integral."}]}, {"dia": 12, "comidas": [{"tipo": "Desayuno", "nombre": "Tostadas de Aguacate con Huevo Cocido", "ingredientes": ["2 rebanadas de pan integral (60 g)", "50 g de aguacate", "1 huevo cocido (50 g)", "Sal y pimienta al gusto"], "preparacion": "Tostar el pan, untar con aguacate y colocar rodajas de huevo cocido. Agregar sal y pimienta al gusto."}, {"tipo": "Almuerzo", "nombre": "Pechuga de Pollo con Puré de Calabaza", "ingredientes": ["120 g de pechuga de pollo", "100 g de calabaza", "1 cucharadita de aceite de oliva (5 ml)", "80 g de brócoli al vapor"], "preparacion": "Cocinar la pechuga de pollo a la plancha. Hervir la calabaza, hacer un puré y agregar aceite de oliva. Acompañar con brócoli al vapor."}, {"tipo": "Cena", "nombre": "Sopa de Tomate y Albahaca", "ingredientes": ["100 g de tomate", "10 g de albahaca fresca", "1 diente de ajo", "100 ml de caldo de verduras"], "preparacion": "Saltear el ajo, agregar los tomates picados y el caldo. Cocinar 10 minutos y licuar. Servir con albahaca fresca."}]}, {"dia": 13, "comidas": [{"tipo": "Desayuno", "nombre": "Tostadas Integrales con Queso y Tomate", "ingredientes": ["2 rebanadas de pan integral (60 g)", "50 g de queso fresco", "50 g de tomate en rodajas", "Orégano al gusto"], "preparacion": "Tostar el pan integral, colocar las rodajas de tomate y el queso fresco por encima. Espolvorear con orégano y servir."}, {"tipo": "Almuerzo", "nombre": "Pechuga de Pollo a la Parrilla con Ensalada Mixta", "ingredientes": ["120 g de pechuga de pollo", "80 g de lechuga", "50 g de zanahoria rallada", "30 g de pepino en rodajas", "1 cucharada de aceite de oliva", "Jugo de medio limón"], "preparacion": "Cocinar la pechuga a la parrilla y servir con ensalada mixta aderezada con aceite de oliva y jugo de limón."}, {"tipo": "Cena", "nombre": "Sopa de Lentejas", "ingredientes": ["100 g de lentejas cocidas", "1 diente de ajo", "50 g de zanahoria en cubos", "100 ml de caldo de verduras", "1 cucharadita de aceite de oliva"], "preparacion": "Saltear el ajo con el aceite de oliva, agregar la zanahoria, las lentejas y el caldo. Cocinar a fuego medio durante 15 minutos. Servir caliente."}]}, {"dia": 14, "comidas": [{"tipo": "Desayuno", "nombre": "Batido Verde de Espinacas y Manzana", "ingredientes": ["1 taza de espinacas frescas (30 g)", "1 manzana verde (150 g)", "1 taza de agua (200 ml)", "Jugo de medio limón (10 ml)"], "preparacion": "Licuar todos los ingredientes hasta obtener una mezcla homogénea. Servir fresco."}, {"tipo": "Almuerzo", "nombre": "Ensalada de Quinoa y Pollo", "ingredientes": ["100 g de quinoa cocida", "80 g de pechuga de pollo desmenuzada", "50 g de pepino picado", "50 g de zanahoria rallada", "1 cucharada de aceite de oliva", "Jugo de medio limón"], "preparacion": "Mezclar todos los ingredientes en un tazón y aderezar con aceite de oliva y jugo de limón."}, {"tipo": "Cena", "nombre": "Crema de Espárragos", "ingredientes": ["150 g de espárragos", "100 ml de caldo de verduras", "1 diente de ajo", "1 cucharadita de aceite de oliva"], "preparacion": "Saltear el ajo, agregar los espárragos troceados y el caldo. Cocinar 10 minutos y licuar hasta obtener una textura suave."}]}, {"dia": 15, "comidas": [{"tipo": "Desayuno", "nombre": "Avena con Frutas y Canela", "ingredientes": ["40 g de avena", "200 ml de leche de almendra", "1 plátano en rodajas (80 g)", "1 cucharadita de canela (5 g)"], "preparacion": "Cocinar la avena con la leche de almendra. Servir con rodajas de plátano y espolvorear con canela."}, {"tipo": "Almuerzo", "nombre": "Tacos de Pescado", "ingredientes": ["120 g de filete de pescado a la plancha", "2 tortillas de maíz (60 g)", "50 g de col rallada", "1 cucharada de yogur natural", "Jugo de medio limón"], "preparacion": "Colocar el pescado desmenuzado sobre las tortillas y agregar la col rallada. Aderezar con yogur y jugo de limón."}, {"tipo": "Cena", "nombre": "Ensalada de Atún y Espinacas", "ingredientes": ["80 g de atún en agua", "50 g de espinacas frescas", "30 g de pepino en rodajas", "1 cucharada de aceite de oliva", "Jugo de medio limón"], "preparacion": "Mezclar todos los ingredientes y aderezar con aceite de oliva y jugo de limón."}]}, {"dia": 16, "comidas": [{"tipo": "Desayuno", "nombre": "Tostadas de Huevo y Aguacate", "ingredientes": ["2 rebanadas de pan integral (60 g)", "1 huevo revuelto (50 g)", "50 g de aguacate", "Sal y pimienta al gusto"], "preparacion": "Tostar el pan, untar con aguacate y agregar el huevo revuelto encima. Sazonar con sal y pimienta al gusto."}, {"tipo": "Almuerzo", "nombre": "Pechuga de Pollo al Limón con Verduras Salteadas", "ingredientes": ["120 g de pechuga de pollo", "Jugo de medio limón", "50 g de calabacín", "50 g de zanahoria", "1 cucharadita de aceite de oliva", "Sal y pimienta al gusto"], "preparacion": "Marinar el pollo con jugo de limón, sal y pimienta. Cocinar a la plancha. Saltear las verduras con aceite de oliva y servir como acompañamiento."}, {"tipo": "Cena", "nombre": "Crema de Calabaza", "ingredientes": ["150 g de calabaza", "100 ml de caldo de verduras", "1 diente de ajo", "1 cucharadita de aceite de oliva"], "preparacion": "Cocinar la calabaza y el ajo en el caldo hasta que estén suaves. Licuar hasta obtener una textura cremosa. Servir caliente."}]}, {"dia": 17, "comidas": [{"tipo": "Desayuno", "nombre": "Batido de Plátano y Avena", "ingredientes": ["1 plátano (80 g)", "200 ml de leche de almendra", "20 g de avena", "1 cucharadita de miel (5 g)"], "preparacion": "Licuar todos los ingredientes hasta obtener un batido homogéneo. Servir frío."}, {"tipo": "Almuerzo", "nombre": "Salmón al Horno con Espárragos", "ingredientes": ["120 g de filete de salmón", "100 g de espárragos", "1 cucharadita de aceite de oliva", "Sal y pimienta al gusto"], "preparacion": "Colocar el salmón y los espárragos en una bandeja para hornear. Rociar con aceite de oliva, sazonar con sal y pimienta, y hornear a 180°C durante 15 minutos."}, {"tipo": "Cena", "nombre": "Ensalada de Garbanzos", "ingredientes": ["100 g de garbanzos cocidos", "50 g de tomate cherry", "30 g de pepino", "1 cucharada de aceite de oliva", "Jugo de medio limón"], "preparacion": "Mezclar todos los ingredientes en un bol y aderezar con aceite de oliva y jugo de limón."}]}, {"dia": 18, "comidas": [{"tipo": "Desayuno", "nombre": "Panqueques de Avena y Plátano", "ingredientes": ["40 g de avena", "1 plátano (80 g)", "1 huevo (50 g)", "1 cucharadita de miel (5 g)"], "preparacion": "Triturar el plátano y mezclar con la avena y el huevo. Cocinar en una sartén antiadherente hasta dorar. Servir con miel."}, {"tipo": "Almuerzo", "nombre": "Pechuga de Pollo con Arroz Integral y Verduras", "ingredientes": ["120 g de pechuga de pollo", "80 g de arroz integral cocido", "50 g de brócoli", "50 g de zanahoria", "1 cucharadita de aceite de oliva"], "preparacion": "Cocinar el pollo a la plancha y servir con arroz integral y verduras al vapor."}, {"tipo": "Cena", "nombre": "Crema de Espinacas", "ingredientes": ["100 g de espinacas", "100 ml de caldo de verduras", "1 diente de ajo", "1 cucharadita de aceite de oliva"], "preparacion": "Saltear el ajo con las espinacas, agregar el caldo y cocinar 5 minutos. Licuar hasta obtener una textura cremosa. Servir caliente."}]}, {"dia": 19, "comidas": [{"tipo": "Desayuno", "nombre": "Tostadas de Aguacate y Queso Cottage", "ingredientes": ["2 rebanadas de pan integral (60 g)", "50 g de aguacate", "30 g de queso cottage", "Sal y pimienta al gusto"], "preparacion": "Untar el aguacate sobre las tostadas y agregar queso cottage. Sazonar con sal y pimienta."}, {"tipo": "Almuerzo", "nombre": "Filete de Res con Ensalada Verde", "ingredientes": ["150 g de filete de res", "80 g de lechuga", "50 g de espinacas", "30 g de pepino", "1 cucharada de aceite de oliva", "Jugo de medio limón"], "preparacion": "Cocinar el filete a la parrilla y servir con la ensalada verde aderezada con aceite de oliva y jugo de limón."}, {"tipo": "Cena", "nombre": "Sopa de Calabacita y Zanahoria", "ingredientes": ["100 g de calabacita", "50 g de zanahoria", "100 ml de caldo de pollo", "1 cucharadita de aceite de oliva"], "preparacion": "Cocinar las verduras en el caldo hasta que estén suaves. Licuar y servir caliente."}]}, {"dia": 20, "comidas": [{"tipo": "Desayuno", "nombre": "Batido de Frutas y Espinacas", "ingredientes": ["1 taza de espinacas frescas (30 g)", "1 plátano (80 g)", "1 taza de leche de almendra (200 ml)", "1 cucharadita de miel (5 g)"], "preparacion": "Licuar todos los ingredientes hasta obtener una mezcla homogénea. Servir frío."}, {"tipo": "Almuerzo", "nombre": "Tilapia al Vapor con Arroz Integral", "ingredientes": ["150 g de filete de tilapia", "80 g de arroz integral cocido", "50 g de brócoli", "Jugo de medio limón"], "preparacion": "Cocinar la tilapia al vapor y servir con arroz integral y brócoli al vapor. Rociar con jugo de limón."}, {"tipo": "Cena", "nombre": "Ensalada Caprese", "ingredientes": ["100 g de tomate", "50 g de mozzarella fresca", "10 g de albahaca", "1 cucharada de aceite de oliva", "1 cucharadita de vinagre balsámico"], "preparacion": "Cortar el tomate y la mozzarella en rodajas. Alternar en un plato, agregar albahaca y aderezar con aceite de oliva y vinagre balsámico."}]}, {"dia": 21, "comidas": [{"tipo": "Desayuno", "nombre": "Omelette de Espinacas y Queso Fresco", "ingredientes": ["2 huevos (100 g)", "30 g de espinacas frescas", "20 g de queso fresco", "Sal y pimienta al gusto"], "preparacion": "Batir los huevos y cocinar en una sartén con las espinacas. Agregar el queso fresco al final. Servir caliente."}, {"tipo": "Almuerzo", "nombre": "Pollo al Curry con Arroz Integral", "ingredientes": ["120 g de pechuga de pollo", "100 g de arroz integral cocido", "50 g de zanahoria", "50 g de calabacín", "1 cucharadita de curry en polvo", "1 cucharadita de aceite de oliva"], "preparacion": "Saltear el pollo y las verduras con aceite de oliva y curry. Servir con arroz integral caliente."}, {"tipo": "Cena", "nombre": "Sopa de Verduras Variadas", "ingredientes": ["50 g de zanahoria", "50 g de apio", "50 g de papa", "100 ml de caldo de verduras"], "preparacion": "Cocinar las verduras en el caldo hasta que estén suaves. Licuar parcialmente para dejar algunos trozos enteros. Servir caliente."}]}];
+  const ICON = {Desayuno:'🌅', Almuerzo:'☀️', Cena:'🌙'};
+  const FRASES = [
+    "Hoy es un gran día para cuidarte. 🌱",
+    "Cada comida es un acto de amor propio. 💚",
+    "No se trata de comer menos, sino de comer mejor.",
+    "Tu cuerpo te agradece cada elección saludable.",
+    "Un día a la vez. ¡Tú puedes! 🌿",
+    "La constancia es más fuerte que la perfección.",
+    "Comer rico y sano sí es posible. 🥗"
+  ];
+
+  let estado = {completados:[], agua:{}, dia:1};
+  try{ const g=localStorage.getItem('menus_estado'); if(g) estado=JSON.parse(g); }catch(e){}
+  function guardar(){ try{ localStorage.setItem('menus_estado', JSON.stringify(estado)); }catch(e){} }
+
+  const SEMANAS=[[1,7,'Semana 1'],[8,14,'Semana 2'],[15,21,'Semana 3']];
+
+  function pintarNav(){
+    let h='';
+    SEMANAS.forEach(([a,b,t])=>{
+      h+='<div class="semana">'+t+'</div><div class="dias">';
+      for(let n=a;n<=b;n++){
+        const act=n===estado.dia?'activo':'';
+        const hecho=estado.completados.includes(n)?'hecho':'';
+        const ck=estado.completados.includes(n)?'<span class="ck">✓</span>':'';
+        h+='<button class="dchip '+act+' '+hecho+'" onclick="irDia('+n+')">'+n+ck+'</button>';
+      }
+      h+='</div>';
+    });
+    document.getElementById('navdias').innerHTML=h;
+  }
+
+  function pintarProgreso(){
+    const c=estado.completados.length;
+    document.getElementById('pcount').textContent=c+' de 21 días';
+    const pct=Math.round(c/21*100);
+    document.getElementById('ppct').textContent=pct+'%';
+    document.getElementById('pbar').style.width=pct+'%';
+    document.getElementById('frase').textContent=FRASES[estado.dia%FRASES.length];
+  }
+
+  function pintarDia(){
+    const d=DIAS[estado.dia-1];
+    const aguaDia=estado.agua[estado.dia]||0;
+    let h='<div class="diahead"><div class="et">Tu menú de hoy</div><h2>Día '+estado.dia+'</h2></div>';
+    d.comidas.forEach(c=>{
+      h+='<div class="comida"><div class="ctipo">'+(ICON[c.tipo]||'🍽️')+' '+c.tipo+'</div>';
+      h+='<div class="cnombre">'+c.nombre+'</div>';
+      h+='<div class="subt">Ingredientes</div><ul class="ings">';
+      c.ingredientes.forEach(i=>h+='<li>'+i+'</li>');
+      h+='</ul><div class="subt">Preparación</div><div class="prep">'+c.preparacion+'</div></div>';
+    });
+    // agua
+    h+='<div class="agua"><h3>💧 Mi agua de hoy</h3><p>Toca un vaso por cada uno que tomes (meta: 8).</p><div class="vasos">';
+    for(let v=1;v<=8;v++) h+='<span class="vaso '+(v<=aguaDia?'on':'')+'" onclick="agua('+v+')">💧</span>';
+    h+='</div></div>';
+    // completar
+    const hecho=estado.completados.includes(estado.dia);
+    h+='<button class="completar '+(hecho?'listo':'')+'" onclick="completar()">'+(hecho?'✓ Día '+estado.dia+' completado':'Marcar Día '+estado.dia+' como completado')+'</button>';
+    // celebración día 21
+    if(estado.completados.length===21){
+      h+='<div class="celebra show"><h3>¡Lo lograste! 🎉</h3><p>Completaste tus 21 días. ¡Qué orgullo! Esto no es el final, es tu nuevo estilo de vida. 💚</p></div>';
+    }
+    document.getElementById('contenido').innerHTML=h;
+    document.getElementById('prev').disabled=estado.dia===1;
+    document.getElementById('next').disabled=estado.dia===21;
+  }
+
+  function render(){ pintarNav(); pintarProgreso(); pintarDia(); }
+  window.irDia=function(n){ estado.dia=n; guardar(); render(); window.scrollTo({top:0,behavior:'smooth'}); };
+  window.completar=function(){
+    const i=estado.completados.indexOf(estado.dia);
+    if(i>=0) estado.completados.splice(i,1); else estado.completados.push(estado.dia);
+    guardar(); render();
+  };
+  window.agua=function(v){
+    const cur=estado.agua[estado.dia]||0;
+    estado.agua[estado.dia]= (cur===v)?v-1:v;
+    guardar(); pintarDia();
+  };
+  document.getElementById('prev').onclick=()=>{ if(estado.dia>1) irDia(estado.dia-1); };
+  document.getElementById('next').onclick=()=>{ if(estado.dia<21) irDia(estado.dia+1); };
+
+  render();
+</script>
+</body>
+</html>
